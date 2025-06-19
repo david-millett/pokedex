@@ -10,6 +10,7 @@ export const getPokemonData = async () => {
     if (cachedData) {
         // If so, use cached data
         console.log('Fetched from local storage')
+        // Convert the string stored in localStorage back into a JavaScript object
         return JSON.parse(cachedData)
     }
 
@@ -18,6 +19,7 @@ export const getPokemonData = async () => {
     const results = response.data.results
 
     // Save the fetched data to the cache
+    // Becuase localStorage only stores string data, need to convert it to a JSON string
     localStorage.setItem('pokemon', JSON.stringify(results))
     console.log(`Pokemon added to cache`)
     return results
