@@ -26,13 +26,21 @@ const originalPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 // }
 
 export const getPokemonData = async () => {
+
     const cachedData = localStorage.getItem('pokemon')
+    
+    // Check if data is already cached
     if (cachedData) {
+        // If so, use cached data
         console.log('Fetched from local storage cache')
         return JSON.parse(cachedData)
     }
+
+    // If not, fetch the necessary data from the Poke API
     const { data } = await axios.get(originalPokemon)
-    localStorage.setItem('pokemon', JSON.stringify(data))
+    
+    // Save the fetched data to the cache
+    localStorage.setItem('pokemon', JSON.stringify(data.results))
     console.log(`Pokemon added to cache`)
-    return data
+    return data.results
 }

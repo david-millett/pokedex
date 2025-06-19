@@ -1,12 +1,11 @@
-# React + Vite
+# Pokedex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was designed as a way to demonstrate wrangling and transforming large datasets ready for frontend use. Also with a focus on efficiency.
 
-Currently, two official plugins are available:
+Using the PokeAPI as a fun initial project - this RESTful API interface stores thousands of lines of data relating to pokemon
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Day 1 
 
-## Expanding the ESLint configuration
+Set up a `pokemonService.js` file to get the pokemon data. As per the API's rules, and to follow good practice, the data was saved to local storage to minimise API requests and improve overall efficiency. HOW?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Initially, the dataset was limited to the original 151 pokemon.
