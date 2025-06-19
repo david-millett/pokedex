@@ -1,29 +1,6 @@
 import axios from "axios"
 
-const originalPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-
-// const cachedData = {}
-
-// export const getPokemonData = async (pokemon) => {
-//     if (!cachedData[pokemon]) {
-//         const { data } = await axios.get(`${BASE_URL}/${pokemon}`)
-//         cachedData[pokemon] = data
-//         console.log(`${pokemon} added to cache`)
-//     }
-//     return cachedData
-// }
-
-// export const getPokemonData = async (pokemon) => {
-//     const cachedData = localStorage.getItem(pokemon)
-//     if (cachedData) {
-//         console.log('Fetched from local storage cache')
-//         return JSON.parse(cachedData)
-//     }
-//     const { data } = await axios.get(`${BASE_URL}/${pokemon}`)
-//     localStorage.setItem(pokemon, JSON.stringify(data))
-//     console.log(`${pokemon} added to cache`)
-//     return data
-// }
+const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 
 export const getPokemonData = async () => {
 
@@ -32,15 +9,16 @@ export const getPokemonData = async () => {
     // Check if data is already cached
     if (cachedData) {
         // If so, use cached data
-        console.log('Fetched from local storage cache')
+        console.log('Fetched from local storage')
         return JSON.parse(cachedData)
     }
 
     // If not, fetch the necessary data from the Poke API
-    const { data } = await axios.get(originalPokemon)
-    
+    const response = await axios.get(POKEAPI_URL)
+    const results = response.data.results
+
     // Save the fetched data to the cache
-    localStorage.setItem('pokemon', JSON.stringify(data.results))
+    localStorage.setItem('pokemon', JSON.stringify(results))
     console.log(`Pokemon added to cache`)
-    return data.results
+    return results
 }
