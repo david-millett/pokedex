@@ -5,15 +5,17 @@ import { getPokemonData } from './services/pokemonService'
 function App() {
 
   const testing = async () => {
-    const bulbasaur = await getPokemonData(3)
-    console.log(bulbasaur.name)
+    const pokemon = await getPokemonData()
+    console.log(pokemon)
   }
 
   return (
     <>
-      <button onClick={() => testing()}>Click</button>
+      <button onClick={testing}>Click</button>
     </>
   )
 }
 
 export default App
+
+
