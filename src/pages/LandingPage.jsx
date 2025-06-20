@@ -2,7 +2,7 @@ import { getAllPokemon } from "../services/pokemonService"
 import { useState, useEffect } from "react"
 
 // Components
-import PageControls from "../components/PageControls"
+import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table"
 import Loading from "../components/Loading"
 
@@ -39,12 +39,12 @@ const Landing = () => {
     if (allPokemon.length === 0) return <Loading />
 
     return (
-        <>
+        <main>
             <h1>Pokedex</h1>
             <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} />
             <Table pokemon={allPokemon} page={page} pageLength={pageLength} />
             <button onClick={testing}>Click</button>
-        </>
+        </main>
     )
 }
 

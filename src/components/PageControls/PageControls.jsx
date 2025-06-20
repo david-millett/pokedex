@@ -1,3 +1,6 @@
+// Styles
+import styles from './PageControls.module.scss'
+
 const PageControls = ({ pokemon, page, setPage, pageLength }) => {
 
     // Functions
@@ -11,7 +14,7 @@ const PageControls = ({ pokemon, page, setPage, pageLength }) => {
 
     // PageControls
     return (
-        <main>
+        <div className={styles.container}>
             <button disabled={page === 0} onClick={() => setPage(0)}>&lt;&lt;</button>
             <button disabled={page === 0} onClick={() => setPage(page - 1)}>&lt;</button>
         
@@ -25,7 +28,7 @@ const PageControls = ({ pokemon, page, setPage, pageLength }) => {
         
             <button disabled={page === pageLast - 1} onClick={() => setPage(page + 1)}>&gt;</button>
             <button disabled={page === pageLast - 1} onClick={() => setPage(pageLast - 1)}>&gt;&gt;</button>
-      </main>
+      </div>
     )
 }
 
