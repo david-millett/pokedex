@@ -2,6 +2,7 @@ import axios from "axios"
 
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon'
 
+// Function to get list of all original 151 pokemon and save them to local storage
 export const getAllPokemon = async () => {
 
     let results
@@ -27,8 +28,12 @@ export const getAllPokemon = async () => {
 }
 
 // Function to isolate the data required for the current page
-export const getPage = (page, pageLength, pokemon) => {
+export const getPage = async (page, pageLength, pokemon) => {
     const itemFirst = page * pageLength
     const itemLast = (page + 1) * pageLength
-    return pokemon.slice(itemFirst, itemLast)
+
+    const pokemonData = pokemon.slice(itemFirst, itemLast)
+    // const response = await 
+
+    return pokemonData
 }

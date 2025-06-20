@@ -1,12 +1,24 @@
+import { useEffect, useState } from "react"
 import { getPage } from "../services/pokemonService"
 
 const Table = ({ pokemon, page, pageLength }) => {
 
     // Variables
     const columns = ['name']
+    const [currentPage, setCurrentPage] = useState([])
 
     // Functions
-    const currentPage = getPage(page, pageLength, pokemon)
+    useEffect(() => {
+        const fetchPageData = async () => {
+            try {
+                const data = await getPage(page, pageLength, pokemon)
+                setCurrentPage(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchPageData()
+    }, [page, pageLength, pokemon])
 
     // Table
     return (
