@@ -51,8 +51,8 @@ const Table = ({ pokemon, page, pageLength }) => {
                                 } else if (column === 'name') {
                                     content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
                                 } else {
-                                    content = pokemon[column].map((type, i) => {
-                                        return <TypeBadge key={i} type={type.type.name} />
+                                    content = pokemon[column].map((type) => {
+                                        return <TypeBadge key={type} type={type} />
                                     })
                                 }
                                 return <td key={column}>{content}</td>

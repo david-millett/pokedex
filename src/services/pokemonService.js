@@ -29,22 +29,40 @@ export const getAllPokemon = async () => {
 
 // Function to isolate the data required for the current page
 export const getPage = async (page, pageLength, pokemon) => {
+
     const itemFirst = page * pageLength
     const itemLast = (page + 1) * pageLength
-    const pokemonData = pokemon.slice(itemFirst, itemLast)
+    
+    let results
+    const cacheKey = `pokemon-page-${itemFirst + 1}-${itemLast}`
+    const cachedData = localStorage.getItem(cacheKey)
 
-    const pokemonDetailedData = await Promise.all(
-        pokemonData.map(async (mon) => {
-            const { data } = await axios.get(mon.url)
-            const { types, id } = data
-            return {
-                number: id,
-                ...mon,
-                types
-            }
-        })
-    )
+    if (cachedData) {
+        console.log('Fetched page from cache')
+        results = JSON.parse(cachedData)
+    } else {
+        const pokemonData = pokemon.slice(itemFirst, itemLast)
+    
+        results = await Promise.all(
+            pokemonData.map(async (mon) => {
+                const { data } = await axios.get(mon.url)
+                const { types, id } = data
 
-    console.log(pokemonDetailedData)
-    return pokemonDetailedData
+                const cleanTypes = types.map((type) => {
+                    return type.type.name
+                })
+
+                return {
+                    ...mon,
+                    number: id,
+                    types: cleanTypes
+                }
+            })
+        )
+        console.log('Page added to cache')
+        localStorage.setItem(cacheKey, JSON.stringify(results))
+    }
+
+    console.log(results)
+    return results
 }
