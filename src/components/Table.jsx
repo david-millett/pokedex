@@ -4,6 +4,7 @@ import { getPage } from "../services/pokemonService"
 // Components
 import TypeBadge from "./TypeBadge"
 
+// Table
 const Table = ({ pokemon, page, pageLength }) => {
 
     // Variables
@@ -23,7 +24,7 @@ const Table = ({ pokemon, page, pageLength }) => {
         fetchPageData()
     }, [page, pageLength, pokemon])
 
-    // Table
+    // Component
     return (
         <table>
             
@@ -44,23 +45,17 @@ const Table = ({ pokemon, page, pageLength }) => {
                     return (
                         <tr key={pokemon.name}>
                             {columns.map((column) => {
+                                let content
                                 if (column === 'number') {
-                                    return <td key={column}>{pokemon[column]}</td>
+                                    content = pokemon[column]
                                 } else if (column === 'name') {
-                                    return (
-                                        <td key={column}>
-                                            {pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)}
-                                        </td>
-                                )
-                            } else {
-                                return (
-                                    <td key={column}>
-                                        {pokemon[column].map((type) => {
-                                            return <TypeBadge key={type} type={type.type.name} />
-                                        })}
-                                    </td>
-                                )
-                            }
+                                    content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
+                                } else {
+                                    content = pokemon[column].map((type, i) => {
+                                        return <TypeBadge key={i} type={type.type.name} />
+                                    })
+                                }
+                                return <td key={column}>{content}</td>
                             })}
                         </tr>
                     )

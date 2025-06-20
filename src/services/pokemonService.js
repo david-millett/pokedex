@@ -48,9 +48,3 @@ export const getPage = async (page, pageLength, pokemon) => {
     console.log(pokemonDetailedData)
     return pokemonDetailedData
 }
-
-// const getPokemonData = async (url) => {
-//     const { data } = await axios.get(url)
-//     // console.log(data)
-//     return data
-// }
