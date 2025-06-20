@@ -18,7 +18,7 @@ export const getOriginalPokemon = async () => {
     const response = await axios.get(`${POKEAPI_URL}?limit=151`)
     const results = response.data.results
 
-    // Save the fetched data to the cache
+    // Save fetched data to the cache
     // Because localStorage only stores data in string format, need to convert it
     localStorage.setItem('pokemon', JSON.stringify(results))
     console.log(`Pokemon added to cache`)

@@ -1,5 +1,4 @@
 import './App.css'
-
 import { getOriginalPokemon } from './services/pokemonService'
 
 function App() {
