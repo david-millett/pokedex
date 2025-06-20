@@ -9,13 +9,13 @@ import Loading from "../components/Loading"
 const Landing = () => {
 
     // Variables
-
+    const [allPokemon, setAllPokemon] = useState([])
     const [page, setPage] = useState(0)
     const pageLength = 10
 
+    // Functions
 
-    const [allPokemon, setAllPokemon] = useState([])
-    // Fetch data asynchronously on mount, then store it in state
+    // Fetch pokemon data asynchronously on mount, then store it in state
     useEffect(() => {
         const fetchPokemon = async () => {
             try {
@@ -27,13 +27,6 @@ const Landing = () => {
         }
         fetchPokemon()
     }, [])
-
-    
-    // Functions
-    const testing = async () => {
-        const pokemon = await getAllPokemon()
-        console.log(pokemon)
-    }
     
     // Page
     if (allPokemon.length === 0) return <Loading />
@@ -43,7 +36,6 @@ const Landing = () => {
             <h1>Pokedex</h1>
             <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} />
             <Table pokemon={allPokemon} page={page} pageLength={pageLength} />
-            <button onClick={testing}>Click</button>
         </main>
     )
 }

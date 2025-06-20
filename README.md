@@ -23,3 +23,5 @@ Set to work on making the landing page and the components that make it up. Creat
 Especially in the `Table` component - set it with `useEffect` so that it would update every time the `page`, `pageLength`, or `pokemon` list changed. This project was a bit of fun, testing my limits and experimenting to see what was possible and how it could be done.
 
 Created a new `pokemonService` function that paginates the pokemon data and then makes calls to the API to fetch more in depth info. This was done to improve efficiency so that only a smaller page amount's worth of pokemon had further calls to the database. This is because the call to fetch the list only contains the pokemon's name and a url to its individual information. So, had to go through and make a call for each one to access more information. This required async formulae with a `.map()`.
+
+Go into detail about all the info this huge dataset holds, and how only the necessary info was extracted and saved locally.
