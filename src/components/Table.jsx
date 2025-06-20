@@ -7,7 +7,6 @@ const Table = ({ pokemon }) => {
     return (
         <table>
             
-            {/* Table header */}
             <thead>
                 <tr>
                     {columns.map((column) => {
@@ -20,13 +19,16 @@ const Table = ({ pokemon }) => {
                 </tr>
             </thead>
 
-            {/* Table body */}
             <tbody>
                 {pokemon.map((mon) => {
                     return (
                         <tr key={mon.name}>
                             {columns.map((column) => {
-                                return <td key={`${mon} ${column}`}>{mon[column]}</td>
+                                return (
+                                    <td key={`${mon} ${column}`}>
+                                        {mon[column].charAt(0).toUpperCase() + mon[column].slice(1)}
+                                    </td>
+                                )
                             })}
                         </tr>
                     )
