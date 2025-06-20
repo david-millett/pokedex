@@ -37,8 +37,8 @@ const Landing = () => {
     return (
         <>
             <h1>Pokedex</h1>
-            <PageControls pokemon={pokemon} />
-            <Table />
+            {/* <PageControls pokemon={pokemon} /> */}
+            <Table pokemon={pokemon} />
             <button onClick={testing}>Click</button>
         </>
     )
