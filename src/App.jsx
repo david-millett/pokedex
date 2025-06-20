@@ -3,11 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 // Styling
 import './App.css'
 
-// Components
-// NavBat, etc
-
 // Pages
-import Landing from './pages/Landing'
+import LandingPage from './pages/LandingPage'
 
 // App
 function App() {
@@ -15,7 +12,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Landing />} />
+        <Route path='/' element={<LandingPage />} />
       </Routes>
     </>
   )

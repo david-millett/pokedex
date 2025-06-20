@@ -2,7 +2,7 @@ import axios from "axios"
 
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon'
 
-export const getOriginalPokemon = async () => {
+export const getAllPokemon = async () => {
 
     let results
     const cachedData = localStorage.getItem('pokemon')
@@ -24,4 +24,11 @@ export const getOriginalPokemon = async () => {
         console.log(`Pokemon added to cache`)
     }
     return results
+}
+
+// Function to isolate the data required for the current page
+export const getPage = (page, pageLength, pokemon) => {
+    const itemFirst = page * pageLength
+    const itemLast = (page + 1) * pageLength
+    return pokemon.slice(itemFirst, itemLast)
 }

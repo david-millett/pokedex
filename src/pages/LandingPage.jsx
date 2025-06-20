@@ -1,4 +1,4 @@
-import { getOriginalPokemon } from "../services/pokemonService"
+import { getAllPokemon } from "../services/pokemonService"
 import { useState, useEffect } from "react"
 
 // Components
@@ -10,13 +10,17 @@ const Landing = () => {
 
     // Variables
 
-    const [pokemon, setPokemon] = useState([])
+    const [page, setPage] = useState(0)
+    const pageLength = 10
+
+
+    const [allPokemon, setAllPokemon] = useState([])
     // Fetch data asynchronously on mount, then store it in state
     useEffect(() => {
         const fetchPokemon = async () => {
             try {
-                const data = await getOriginalPokemon()
-                setPokemon(data)
+                const data = await getAllPokemon()
+                setAllPokemon(data)
             } catch (error) {
                 console.log(error)
             }
@@ -27,18 +31,18 @@ const Landing = () => {
     
     // Functions
     const testing = async () => {
-        const pokemon = await getOriginalPokemon()
+        const pokemon = await getAllPokemon()
         console.log(pokemon)
     }
     
     // Page
-    if (pokemon.length === 0) return <Loading />
+    if (allPokemon.length === 0) return <Loading />
 
     return (
         <>
             <h1>Pokedex</h1>
-            {/* <PageControls pokemon={pokemon} /> */}
-            <Table pokemon={pokemon} />
+            <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} />
+            <Table pokemon={allPokemon} page={page} pageLength={pageLength} />
             <button onClick={testing}>Click</button>
         </>
     )

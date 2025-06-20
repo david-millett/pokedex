@@ -1,16 +1,13 @@
-import { useState } from "react"
+const PageControls = ({ pokemon, page, setPage, pageLength }) => {
 
-
-const PageControls = ({ pokemon }) => {
-
+    // Functions
+    const getPageNumbers = (pageFirst, pageLast) => {
+        return Array.from({ length: pageLast - pageFirst}, (_, i) => pageFirst + i)
+    }
+    
     // Variables
-    const [page, setPage] = useState(0)
-    // const [pageLength, setPageLength] = useState(10)
-    const pageLength = 10
     const pageLast = Math.ceil(pokemon.length / pageLength)
-
-    // temporary
-    const pages = [0, 1, 2, 3, 4, 5]
+    const pages = getPageNumbers(0, pageLast)
 
     // PageControls
     return (

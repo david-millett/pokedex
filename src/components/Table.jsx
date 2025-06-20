@@ -1,7 +1,12 @@
-const Table = ({ pokemon }) => {
+import { getPage } from "../services/pokemonService"
+
+const Table = ({ pokemon, page, pageLength }) => {
 
     // Variables
     const columns = ['name']
+
+    // Functions
+    const currentPage = getPage(page, pageLength, pokemon)
 
     // Table
     return (
@@ -20,13 +25,13 @@ const Table = ({ pokemon }) => {
             </thead>
 
             <tbody>
-                {pokemon.map((mon) => {
+                {currentPage.map((pokemon) => {
                     return (
-                        <tr key={mon.name}>
+                        <tr key={pokemon.name}>
                             {columns.map((column) => {
                                 return (
-                                    <td key={`${mon} ${column}`}>
-                                        {mon[column].charAt(0).toUpperCase() + mon[column].slice(1)}
+                                    <td key={`${pokemon} ${column}`}>
+                                        {pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)}
                                     </td>
                                 )
                             })}
