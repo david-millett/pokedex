@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
-import { getPage } from "../services/pokemonService"
+import { getPage } from "../../services/pokemonService"
+
+// Styling
+import styles from './Table.module.scss'
 
 // Components
-import TypeBadge from "./TypeBadge"
+import TypeBadge from "../TypeBadge/TypeBadge"
 
 // Table
 const Table = ({ pokemon, page, pageLength }) => {
@@ -51,9 +54,9 @@ const Table = ({ pokemon, page, pageLength }) => {
                                 } else if (column === 'name') {
                                     content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
                                 } else {
-                                    content = pokemon[column].map((type) => {
+                                    content = <div className={styles.types}>{pokemon[column].map((type) => {
                                         return <TypeBadge key={type} type={type} />
-                                    })
+                                    })}</div>
                                 }
                                 return <td key={column}>{content}</td>
                             })}

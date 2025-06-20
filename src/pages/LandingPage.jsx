@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 
 // Components
 import PageControls from "../components/PageControls/PageControls"
-import Table from "../components/Table"
+import Table from "../components/Table/Table"
 import Loading from "../components/Loading"
 
 const Landing = () => {
