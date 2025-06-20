@@ -31,9 +31,26 @@ export const getAllPokemon = async () => {
 export const getPage = async (page, pageLength, pokemon) => {
     const itemFirst = page * pageLength
     const itemLast = (page + 1) * pageLength
-
     const pokemonData = pokemon.slice(itemFirst, itemLast)
-    // const response = await 
 
-    return pokemonData
+    const pokemonDetailedData = await Promise.all(
+        pokemonData.map(async (mon) => {
+            const { data } = await axios.get(mon.url)
+            const { types, id } = data
+            return {
+                number: id,
+                ...mon,
+                types
+            }
+        })
+    )
+
+    console.log(pokemonDetailedData)
+    return pokemonDetailedData
 }
+
+// const getPokemonData = async (url) => {
+//     const { data } = await axios.get(url)
+//     // console.log(data)
+//     return data
+// }

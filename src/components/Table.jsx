@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import { getPage } from "../services/pokemonService"
 
+// Components
+import TypeBadge from "./TypeBadge"
+
 const Table = ({ pokemon, page, pageLength }) => {
 
     // Variables
-    const columns = ['name']
+    const columns = ['number', 'name', 'types']
     const [currentPage, setCurrentPage] = useState([])
 
     // Functions
@@ -41,11 +44,23 @@ const Table = ({ pokemon, page, pageLength }) => {
                     return (
                         <tr key={pokemon.name}>
                             {columns.map((column) => {
+                                if (column === 'number') {
+                                    return <td key={column}>{pokemon[column]}</td>
+                                } else if (column === 'name') {
+                                    return (
+                                        <td key={column}>
+                                            {pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)}
+                                        </td>
+                                )
+                            } else {
                                 return (
-                                    <td key={`${pokemon} ${column}`}>
-                                        {pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)}
+                                    <td key={column}>
+                                        {pokemon[column].map((type) => {
+                                            return <TypeBadge key={type} type={type.type.name} />
+                                        })}
                                     </td>
                                 )
+                            }
                             })}
                         </tr>
                     )
