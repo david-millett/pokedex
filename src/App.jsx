@@ -1,11 +1,11 @@
 import './App.css'
 
-import { getPokemonData } from './services/pokemonService'
+import { getOriginalPokemon } from './services/pokemonService'
 
 function App() {
 
   const testing = async () => {
-    const pokemon = await getPokemonData()
+    const pokemon = await getOriginalPokemon()
     console.log(pokemon)
   }
 
