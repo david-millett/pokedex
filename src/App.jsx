@@ -1,16 +1,22 @@
+import { Route, Routes } from 'react-router-dom'
+
+// Styling
 import './App.css'
-import { getOriginalPokemon } from './services/pokemonService'
 
+// Components
+// NavBat, etc
+
+// Pages
+import Landing from './pages/Landing'
+
+// App
 function App() {
-
-  const testing = async () => {
-    const pokemon = await getOriginalPokemon()
-    console.log(pokemon)
-  }
 
   return (
     <>
-      <button onClick={testing}>Click</button>
+      <Routes>
+        <Route path='/' element={<Landing />} />
+      </Routes>
     </>
   )
 }
