@@ -4,9 +4,8 @@ import { useState, useEffect } from "react"
 // Components
 import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table/Table"
-import Loading from "../components/Loading"
 
-const Landing = () => {
+const LandingPage = () => {
 
     // Variables
     const [allPokemon, setAllPokemon] = useState([])
@@ -29,8 +28,6 @@ const Landing = () => {
     }, [])
     
     // Page
-    if (allPokemon.length === 0) return <Loading />
-
     return (
         <main>
             <h1>Pokedex</h1>
@@ -40,4 +37,4 @@ const Landing = () => {
     )
 }
 
-export default Landing
+export default LandingPage
