@@ -13,7 +13,6 @@ const Table = ({ currentPage }) => {
     // Component
     return (
         <table>
-            
             <thead>
                 <tr>
                     {columns.map((column) => {
@@ -25,7 +24,6 @@ const Table = ({ currentPage }) => {
                     })}
                 </tr>
             </thead>
-
             <tbody>
                 {currentPage.map((pokemon) => {
                     return (

@@ -1,5 +1,4 @@
-import { getAllPokemon } from "../services/pokemonService"
-import { getPage } from "../services/pokemonService"
+import { getAllPokemon, getPage } from "../services/pokemonService"
 import { useState, useEffect } from "react"
 
 // Components
