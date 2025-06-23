@@ -1,39 +1,16 @@
-import { useEffect, useState } from "react"
-import { getPage } from "../../services/pokemonService"
-
 // Styling
 import styles from './Table.module.scss'
 
 // Components
 import TypeBadge from "../TypeBadge/TypeBadge"
-import Loading from "../Loading"
 
 // Table
-const Table = ({ pokemon, page, pageLength }) => {
+const Table = ({ currentPage }) => {
 
     // Variables
     const columns = ['number', 'name', 'types']
-    const [currentPage, setCurrentPage] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    // Functions
-    useEffect(() => {
-        const fetchPageData = async () => {
-            setLoading(true)
-            try {
-                const data = await getPage(page, pageLength, pokemon)
-                setCurrentPage(data)
-            } catch (error) {
-                console.log(error)
-            }
-            setLoading(false) //is this the best spot for this? could also have an [error, setError] to display something if the request fails
-        }
-        fetchPageData()
-    }, [page, pageLength, pokemon])
 
     // Component
-    if (loading) return <Loading />
-
     return (
         <table>
             
