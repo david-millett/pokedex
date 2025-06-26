@@ -46,7 +46,7 @@ export const getPage = async (page, pageLength, pokemon) => {
         results = await Promise.all(
             pokemonData.map(async (mon) => {
                 const { data } = await axios.get(mon.url)
-                const { types, id } = data
+                const { types, id, sprites } = data
 
                 const cleanTypes = types.map((type) => {
                     return type.type.name
@@ -55,7 +55,8 @@ export const getPage = async (page, pageLength, pokemon) => {
                 return {
                     ...mon,
                     number: id,
-                    types: cleanTypes
+                    types: cleanTypes,
+                    sprite: sprites.versions['generation-viii'].icons.front_default
                 }
             })
         )

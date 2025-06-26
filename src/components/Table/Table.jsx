@@ -8,7 +8,7 @@ import TypeBadge from "../TypeBadge/TypeBadge"
 const Table = ({ currentPage }) => {
 
     // Variables
-    const columns = ['number', 'name', 'types']
+    const columns = [ 'number', 'name', 'sprite', 'types']
 
     // Component
     return (
@@ -34,10 +34,12 @@ const Table = ({ currentPage }) => {
                                     content = pokemon[column]
                                 } else if (column === 'name') {
                                     content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
-                                } else {
+                                } else if (column === 'types') {
                                     content = <div className={styles.types}>{pokemon[column].map((type) => {
                                         return <TypeBadge key={type} type={type} />
                                     })}</div>
+                                } else if (column === 'sprite'){
+                                    content = <img src={pokemon[column]} />
                                 }
                                 return <td key={column}>{content}</td>
                             })}
