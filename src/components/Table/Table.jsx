@@ -8,7 +8,8 @@ import TypeBadge from "../TypeBadge/TypeBadge"
 const Table = ({ currentPage }) => {
 
     // Variables
-    const columns = [ 'number', 'name', 'sprite', 'types']
+    // const columns = [ 'number', 'name', 'sprite', 'types']
+    const columns = [ 'number', 'name']
 
     // Component
     return (

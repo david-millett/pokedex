@@ -1,6 +1,10 @@
 import { getAllPokemon, getPage } from "../services/pokemonService"
 import { useState, useEffect } from "react"
 
+// Styling and assets
+import styles from './LandingPage.module.scss'
+import pokedex from "../assets/pokedex.png"
+
 // Components
 import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table/Table"
@@ -47,19 +51,23 @@ const LandingPage = () => {
     
     // Page
     return (
-        <main>
+        <main className={styles.container}>
             <h1>Pokedex</h1>
+            
             <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} />
-            {
-                loading
-                    ? <Loading />
-                    : (
-                        <>
-                            <Table currentPage={currentPage} />
-                            <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p>
-                        </>
-                    )
-            }
+            <img src={pokedex} />
+            <div className={styles.screen}>
+                {
+                    loading
+                        ? <Loading />
+                        : (
+                            <>
+                                <Table currentPage={currentPage} />
+                                <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p>
+                            </>
+                        )
+                }
+            </div>
         </main>
     )
 }
