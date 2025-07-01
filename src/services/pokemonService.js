@@ -27,6 +27,7 @@ export const getAllPokemon = async () => {
     return results
 }
 
+// ! Currently not being used
 // Function to isolate the data required for the current page
 export const getPage = async (page, pageLength, pokemon) => {
 

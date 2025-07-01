@@ -1,3 +1,10 @@
 export const getPage = (itemFirst, itemLast, pokemon) => {
-    return pokemon.slice(itemFirst, itemLast)
+    const rawData = pokemon.slice(itemFirst, itemLast)
+    const processedData = rawData.map((mon) => {
+        return {
+            ...mon,
+            number: mon.url.split('/')[6]
+        }
+    })
+    return processedData
 }
