@@ -17,12 +17,13 @@ const LandingPage = () => {
     const [allPokemon, setAllPokemon] = useState([])
     const [page, setPage] = useState(0)
     // const [currentPage, setCurrentPage] = useState([])
-    const [loading, setLoading] = useState(false) //Need to set to true if waiting. To look at and tidy up later
+    const [loading, setLoading] = useState(false) //Need to set to true if actually using. To look at and tidy up later
     const pageLength = 10
 
     const [itemFirst, setItemFirst] = useState(0)
-    const [itemLast, setItemLast] = useState(10)
-    // const [itemCurrent, setItemCurrent] = useState(0)
+    // const [itemLast, setItemLast] = useState(10)
+    const itemLast = itemFirst + 10
+    const [itemCurrent, setItemCurrent] = useState(0)
 
 
     const currentPage = getPage(itemFirst, itemLast, allPokemon)
@@ -32,12 +33,14 @@ const LandingPage = () => {
     // Fetch pokemon data asynchronously on mount, then store it in state
     useEffect(() => {
         const fetchPokemon = async () => {
+            setLoading(true)
             try {
                 const data = await getAllPokemon()
                 setAllPokemon(data)
             } catch (error) {
                 console.log(error)
             }
+            setLoading(false)
         }
         fetchPokemon()
     }, [])
@@ -57,12 +60,27 @@ const LandingPage = () => {
     //         fetchPageData()
     //     }, [page, pageLength, allPokemon])
     
+    const moveCursorUp = () => {
+        if (itemCurrent === itemFirst) {
+            setItemFirst(itemFirst - 1)
+        }
+        setItemCurrent(itemCurrent - 1)
+    }
+
+    const moveCursorDown = () => {
+        if (itemCurrent === itemLast - 1) {
+            setItemFirst(itemFirst + 1)
+        }
+        setItemCurrent(itemCurrent + 1)
+    }
+
+
     // Page
     return (
         <main className={styles.container}>
             <h1>Pokedex</h1>
             
-            <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} />
+            <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} itemFirst={itemFirst} setItemFirst={setItemFirst} />
             <img src={pokedex} />
             <div className={styles.screen}>
                 {
@@ -71,11 +89,13 @@ const LandingPage = () => {
                         : (
                             <>
                                 <Table currentPage={currentPage} />
-                                <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p>
+                                {/* <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p> */}
                             </>
                         )
                 }
             </div>
+            <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
+            <button disabled={itemCurrent === itemLast - 1} onClick={moveCursorDown}>Down</button>
         </main>
     )
 }
