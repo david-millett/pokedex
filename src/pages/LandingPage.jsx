@@ -88,14 +88,14 @@ const LandingPage = () => {
                         ? <Loading />
                         : (
                             <>
-                                <Table currentPage={currentPage} />
+                                <Table currentPage={currentPage} itemCurrent={itemCurrent} />
                                 {/* <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p> */}
                             </>
                         )
                 }
             </div>
             <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
-            <button disabled={itemCurrent === itemLast - 1} onClick={moveCursorDown}>Down</button>
+            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>Down</button>
         </main>
     )
 }

@@ -5,7 +5,7 @@ import styles from './Table.module.scss'
 import TypeBadge from "../TypeBadge/TypeBadge"
 
 // Table
-const Table = ({ currentPage }) => {
+const Table = ({ currentPage, itemCurrent }) => {
 
     // Variables
     // const columns = [ 'number', 'name', 'sprite', 'types']
@@ -28,7 +28,7 @@ const Table = ({ currentPage }) => {
             <tbody>
                 {currentPage.map((pokemon) => {
                     return (
-                        <tr key={pokemon.name}>
+                        <tr key={pokemon.name} className={pokemon.number === itemCurrent + 1 ? styles.current : ''}>
                             {columns.map((column) => {
                                 let content
                                 if (column === 'number') {
