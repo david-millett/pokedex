@@ -7,31 +7,25 @@ import styles from './LandingPage.module.scss'
 import pokedex from "../assets/pokedex.png"
 
 // Components
-import PageControls from "../components/PageControls/PageControls"
+// import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table/Table"
+import DPad from "../components/Dpad/Dpad"
 import Loading from "../components/Loading"
 
 const LandingPage = () => {
 
     // Variables
     const [allPokemon, setAllPokemon] = useState([])
-    const [page, setPage] = useState(0)
-    // const [currentPage, setCurrentPage] = useState([])
-    const [loading, setLoading] = useState(false) //Need to set to true if actually using. To look at and tidy up later
-    const pageLength = 10
-
     const [itemFirst, setItemFirst] = useState(0)
-    // const [itemLast, setItemLast] = useState(10)
-    const itemLast = itemFirst + 10
     const [itemCurrent, setItemCurrent] = useState(0)
-
-
+    const pageLength = 10
+    const itemLast = itemFirst + pageLength
     const currentPage = getPage(itemFirst, itemLast, allPokemon)
+    const [loading, setLoading] = useState(true)
 
     // Functions
-
-    // Fetch pokemon data asynchronously on mount, then store it in state
     useEffect(() => {
+        // Fetch pokemon data asynchronously on mount, then store it in state
         const fetchPokemon = async () => {
             setLoading(true)
             try {
@@ -59,37 +53,13 @@ const LandingPage = () => {
     //         }
     //         fetchPageData()
     //     }, [page, pageLength, allPokemon])
-    
-    const moveCursorUp = () => {
-        if (itemCurrent === itemFirst) {
-            setItemFirst(itemFirst - 1)
-        }
-        setItemCurrent(itemCurrent - 1)
-    }
-
-    const moveCursorDown = () => {
-        if (itemCurrent === itemLast - 1) {
-            setItemFirst(itemFirst + 1)
-        }
-        setItemCurrent(itemCurrent + 1)
-    }
-
-    const moveCursorRight = () => {
-        setItemFirst(Math.min(itemFirst + pageLength, allPokemon.length - pageLength))
-        setItemCurrent(Math.min(itemCurrent + pageLength, allPokemon.length - 1))
-    }
-
-    const moveCursorLeft = () => {
-        setItemFirst(Math.max(itemFirst - pageLength, 0))
-        setItemCurrent(Math.max(itemCurrent - pageLength, 0))
-    }
 
     // Page
     return (
         <main className={styles.container}>
             <h1>Pokedex</h1>
             
-            <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} itemFirst={itemFirst} setItemFirst={setItemFirst} />
+            {/* <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} itemFirst={itemFirst} setItemFirst={setItemFirst} /> */}
             <img src={pokedex} />
             <div className={styles.screen}>
                 {
@@ -103,10 +73,7 @@ const LandingPage = () => {
                         )
                 }
             </div>
-            <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
-            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorRight}>Right</button>
-            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>Down</button>
-            <button disabled={itemCurrent === 0} onClick={moveCursorLeft}>Left</button>
+            <DPad itemFirst={itemFirst} setItemFirst={setItemFirst} itemLast={itemLast} itemCurrent={itemCurrent} setItemCurrent={setItemCurrent} pageLength={pageLength} allPokemon={allPokemon} />
         </main>
     )
 }
