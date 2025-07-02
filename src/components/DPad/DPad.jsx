@@ -32,9 +32,9 @@ const DPad = ({ itemControls, pageLength, allPokemon }) => {
     return (
         <div>
             <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
+            <button disabled={itemCurrent === 0} onClick={moveCursorLeft}>Left</button>
             <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorRight}>Right</button>
             <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>Down</button>
-            <button disabled={itemCurrent === 0} onClick={moveCursorLeft}>Left</button>
         </div>
     )
 }
