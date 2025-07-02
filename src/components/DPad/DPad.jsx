@@ -1,4 +1,7 @@
-const DPad = ({ itemFirst, setItemFirst, itemLast, itemCurrent, setItemCurrent, pageLength, allPokemon }) => {
+const DPad = ({ itemControls, pageLength, allPokemon }) => {
+
+    // Variables
+    const { itemFirst, setItemFirst, itemLast, itemCurrent, setItemCurrent } = itemControls
 
     // Functions
     const moveCursorUp = () => {

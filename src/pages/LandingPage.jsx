@@ -23,6 +23,14 @@ const LandingPage = () => {
     const currentPage = getPage(itemFirst, itemLast, allPokemon)
     const [loading, setLoading] = useState(true)
 
+    const itemControls = {
+        itemFirst,
+        setItemFirst,
+        itemCurrent,
+        setItemCurrent,
+        itemLast
+    }
+
     // Functions
     useEffect(() => {
         // Fetch pokemon data asynchronously on mount, then store it in state
@@ -73,7 +81,7 @@ const LandingPage = () => {
                         )
                 }
             </div>
-            <DPad itemFirst={itemFirst} setItemFirst={setItemFirst} itemLast={itemLast} itemCurrent={itemCurrent} setItemCurrent={setItemCurrent} pageLength={pageLength} allPokemon={allPokemon} />
+            <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
         </main>
     )
 }
