@@ -74,6 +74,11 @@ const LandingPage = () => {
         setItemCurrent(itemCurrent + 1)
     }
 
+    const moveCursorRight = () => {
+        setItemFirst(Math.min(itemFirst + pageLength, allPokemon.length - pageLength))
+        setItemCurrent(Math.min(itemCurrent + pageLength, allPokemon.length - 1))
+    }
+
 
     // Page
     return (
@@ -95,6 +100,7 @@ const LandingPage = () => {
                 }
             </div>
             <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
+            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorRight}>Right</button>
             <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>Down</button>
         </main>
     )
