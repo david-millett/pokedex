@@ -27,6 +27,7 @@ export const getAllPokemon = async () => {
     return results
 }
 
+// ! Currently not being used
 // Function to isolate the data required for the current page
 export const getPage = async (page, pageLength, pokemon) => {
 
@@ -46,7 +47,7 @@ export const getPage = async (page, pageLength, pokemon) => {
         results = await Promise.all(
             pokemonData.map(async (mon) => {
                 const { data } = await axios.get(mon.url)
-                const { types, id } = data
+                const { types, id, sprites } = data
 
                 const cleanTypes = types.map((type) => {
                     return type.type.name
@@ -55,7 +56,8 @@ export const getPage = async (page, pageLength, pokemon) => {
                 return {
                     ...mon,
                     number: id,
-                    types: cleanTypes
+                    types: cleanTypes,
+                    sprite: sprites.versions['generation-viii'].icons.front_default
                 }
             })
         )
@@ -65,4 +67,10 @@ export const getPage = async (page, pageLength, pokemon) => {
 
     console.log(results)
     return results
+}
+
+// Get individual pokemon page
+export const getPokemonInfo = async (pokeId) => {
+    const pokemon = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+    console.log(pokemon)
 }

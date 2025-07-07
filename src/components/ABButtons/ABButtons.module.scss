@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+        border-radius: 50px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+.a {
+    background-color: green;
+    margin-bottom: 10px;
+}
+
+.b {
+    background-color: blue;
+    margin-top: 10px;
+}

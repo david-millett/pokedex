@@ -1,29 +1,32 @@
-table {
+// Variables
+@use '../../styles/variables' as *;
+
+.container {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid black;
+    color: $screen4;
+
+    th, td { 
+        width: 50%;
+        padding: 2px;
+    }
+
+    th {
+        border-bottom: 1px solid $screen4;
+        color: $screen3;
+        padding-top: 6px;
+    }
+
+    td:nth-child(odd) {
+        border-right: 1px solid $screen4;    
+    }
+    
+    // tr:nth-child(even) {
+    //     background-color: rgb(237, 237, 237);
+    // }
 }
 
-table, th, td {
-    border-right: 1px solid black;
-}
-
-th {
-    background-color: rgb(128, 128, 128);
-    color: white;
-}
-
-th, td {
-    width: 33%;
-    padding: 5px 0;
-}
-
-tr:nth-child(even) {
-    background-color: rgb(237, 237, 237);
-}
-
-.types {
-    display: flex;
-    gap: 0.25rem;
-    justify-content: center;
+.current {
+    color: $screen2;
+    background-color: $screen3;
 }

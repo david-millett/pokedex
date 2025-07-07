@@ -5,14 +5,15 @@ import styles from './Table.module.scss'
 import TypeBadge from "../TypeBadge/TypeBadge"
 
 // Table
-const Table = ({ currentPage }) => {
+const Table = ({ currentPage, itemCurrent }) => {
 
     // Variables
-    const columns = ['number', 'name', 'types']
+    // const columns = [ 'number', 'name', 'sprite', 'types']
+    const columns = [ 'number', 'name']
 
     // Component
     return (
-        <table>
+        <table className={styles.container}>
             <thead>
                 <tr>
                     {columns.map((column) => {
@@ -27,17 +28,19 @@ const Table = ({ currentPage }) => {
             <tbody>
                 {currentPage.map((pokemon) => {
                     return (
-                        <tr key={pokemon.name}>
+                        <tr key={pokemon.name} className={pokemon.number === itemCurrent + 1 ? styles.current : ''}>
                             {columns.map((column) => {
                                 let content
                                 if (column === 'number') {
                                     content = pokemon[column]
                                 } else if (column === 'name') {
                                     content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
-                                } else {
+                                } else if (column === 'types') {
                                     content = <div className={styles.types}>{pokemon[column].map((type) => {
                                         return <TypeBadge key={type} type={type} />
                                     })}</div>
+                                } else if (column === 'sprite'){
+                                    content = <img src={pokemon[column]} />
                                 }
                                 return <td key={column}>{content}</td>
                             })}
