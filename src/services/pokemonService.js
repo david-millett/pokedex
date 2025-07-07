@@ -68,3 +68,9 @@ export const getPage = async (page, pageLength, pokemon) => {
     console.log(results)
     return results
 }
+
+// Get individual pokemon page
+export const getPokemonInfo = async (pokeId) => {
+    const pokemon = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+    console.log(pokemon)
+}
