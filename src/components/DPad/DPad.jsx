@@ -1,3 +1,6 @@
+// Styling
+import styles from './DPad.module.scss'
+
 const DPad = ({ itemControls, pageLength, allPokemon }) => {
 
     // Variables
@@ -30,11 +33,14 @@ const DPad = ({ itemControls, pageLength, allPokemon }) => {
 
     // Component
     return (
-        <div>
-            <button disabled={itemCurrent === 0} onClick={moveCursorUp}>Up</button>
-            <button disabled={itemCurrent === 0} onClick={moveCursorLeft}>Left</button>
-            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorRight}>Right</button>
-            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>Down</button>
+        <div className={styles.container}>
+            <button disabled={itemCurrent === 0} onClick={moveCursorUp}>U</button>
+            <div>
+                <button disabled={itemCurrent === 0} onClick={moveCursorLeft}>L</button>
+                <div className={styles.space}></div>
+                <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorRight}>R</button>
+            </div>
+            <button disabled={itemCurrent === allPokemon.length - 1} onClick={moveCursorDown}>D</button>
         </div>
     )
 }

@@ -81,7 +81,9 @@ const LandingPage = () => {
                         )
                 }
             </div>
-            <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
+            <div className={styles.controls}>
+                <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
+            </div>
         </main>
     )
 }
