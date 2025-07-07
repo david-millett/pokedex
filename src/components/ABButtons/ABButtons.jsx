@@ -1,11 +1,11 @@
 // Styling
 import styles from './ABButtons.module.scss'
 
-const ABButtons = () => {
+const ABButtons = ({ aFunction, bFunction }) => {
     return (
         <div className={styles.container}>
-            <button className={styles.b}>B</button>
-            <button className={styles.a}>A</button>
+            <button className={styles.b} onClick={bFunction}>B</button>
+            <button className={styles.a} onClick={aFunction}>A</button>
         </div>
     )
 }

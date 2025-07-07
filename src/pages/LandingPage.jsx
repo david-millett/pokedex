@@ -4,10 +4,8 @@ import { getPage } from "../utils/getPage"
 
 // Styling and assets
 import styles from './LandingPage.module.scss'
-import pokedex from "../assets/pokedex.png"
 
 // Components
-// import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table/Table"
 import DPad from "../components/Dpad/Dpad"
 import ABButtons from "../components/ABButtons/ABButtons"
@@ -67,10 +65,6 @@ const LandingPage = () => {
     // Page
     return (
         <main className={styles.container}>
-            <h1>Pokedex</h1>
-            
-            {/* <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} itemFirst={itemFirst} setItemFirst={setItemFirst} /> */}
-            <img src={pokedex} />
             <div className={styles.screen}>
                 {
                     loading

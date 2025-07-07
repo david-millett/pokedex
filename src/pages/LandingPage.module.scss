@@ -1,12 +1,6 @@
 // Variables
 @use '../styles/variables' as *;
 
-.container {
-    img {
-        width: 390px;
-    }
-}
-
 .screen, .controls {
     position: absolute;
     margin-right: 32px;
