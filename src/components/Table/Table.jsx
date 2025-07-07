@@ -13,7 +13,7 @@ const Table = ({ currentPage, itemCurrent }) => {
 
     // Component
     return (
-        <table>
+        <table className={styles.container}>
             <thead>
                 <tr>
                     {columns.map((column) => {
