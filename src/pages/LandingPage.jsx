@@ -87,8 +87,8 @@ const LandingPage = () => {
 
     // Page
     return (
-        <main className={styles.container}>
-            <div className={styles.screen}>
+        <main>
+            <div className="screen">
                 {
                     loading
                         ? <Loading />

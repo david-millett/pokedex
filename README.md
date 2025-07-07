@@ -25,3 +25,10 @@ Especially in the `Table` component - set it with `useEffect` so that it would u
 Created a new `pokemonService` function that paginates the pokemon data and then makes calls to the API to fetch more in depth info. This was done to improve efficiency so that only a smaller page amount's worth of pokemon had further calls to the database. This is because the call to fetch the list only contains the pokemon's name and a url to its individual information. So, had to go through and make a call for each one to access more information. This required async formulae with a `.map()`.
 
 Go into detail about all the info this huge dataset holds, and how only the necessary info was extracted and saved locally.
+
+changed vision to match original plan
+    * now made to look like an authentic original pokedex device
+    * also inspired by the original gameboy aesthetic
+    * data is now paginated to scroll through data like in the games - buttons disabled when it is now appropriate. Left and right skip through a whole page. Used `Math.max` function to stop the app going too far in the table when using left and right to skip a whole page.
+    * used the official gameboy colours for screen. anything on screen will be one of these shades saved to variables scss file
+    * a challenge was overhauling the app so that the same buttons could be used as reusable components: the functions appropriate for the current page will be passed down

@@ -19,3 +19,13 @@ main {
 img {
     width: 390px;
 }
+
+.screen {
+    position: absolute;
+    margin-right: 32px;
+    top: 230px;
+    width: 240px;
+    height: 280px;
+    border-radius: 20px;
+    background-color: $screen2;
+}
