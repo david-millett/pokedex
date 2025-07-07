@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    gap: 5px;
+
+    button {
+        border-radius: 50px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+.a {
+    background-color: green;
+}
+
+.b {
+    background-color: blue;
+}

@@ -1,8 +1,11 @@
+// Styling
+import styles from './ABButtons.module.scss'
+
 const ABButtons = () => {
     return (
-        <div>
-            <button>A</button>
-            <button>B</button>
+        <div className={styles.container}>
+            <button className={styles.b}>B</button>
+            <button className={styles.a}>A</button>
         </div>
     )
 }

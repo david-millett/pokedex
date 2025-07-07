@@ -12,12 +12,16 @@
     // }
 }
 
-.screen {
+.screen, .controls {
     position: absolute;
+    margin-right: 32px;
+
+}
+
+.screen {
     top: 230px;
     width: 240px;
     height: 280px;
-    margin-right: 32px;
     border-radius: 20px;
     background-color: green;
 }
@@ -26,7 +30,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
     top: 590px;
-    width: 200px;
+    width: 230px;
 }
