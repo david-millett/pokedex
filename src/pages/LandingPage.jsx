@@ -11,6 +11,7 @@ import pokedex from "../assets/pokedex.png"
 import Table from "../components/Table/Table"
 import DPad from "../components/Dpad/Dpad"
 import ABButtons from "../components/ABButtons/ABButtons"
+import StartSelectButtons from "../components/StartSelectButtons/StartSelectButtons"
 import Loading from "../components/Loading"
 
 const LandingPage = () => {
@@ -83,8 +84,11 @@ const LandingPage = () => {
                 }
             </div>
             <div className={styles.controls}>
-                <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
-                <ABButtons />
+                <StartSelectButtons />
+                <div className={styles.lowerControls}>
+                    <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
+                    <ABButtons />
+                </div>
             </div>
         </main>
     )

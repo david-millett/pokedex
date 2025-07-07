@@ -27,9 +27,15 @@
 }
 
 .controls {
+    top: 570px;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lowerControls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 590px;
-    width: 230px;
 }
