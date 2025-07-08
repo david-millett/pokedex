@@ -13,7 +13,10 @@ const App = () => {
       <h1>Pokedex</h1>
       <img src={pokedex} />
       <Routes>
-        <Route path='/' element={<LandingPage />} />
+        {/* Landing page */}
+        <Route path='/pokemon' element={<LandingPage />} />
+        <Route path='/pokemon/:pokeId' element={<h1>POKEMON</h1>} />
+        {/* /team */}
       </Routes>
     </main>
   )

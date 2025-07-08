@@ -1,11 +1,15 @@
 // Styling
 import styles from './ABButtons.module.scss'
 
-const ABButtons = ({ aFunction, bFunction }) => {
+const ABButtons = ({ buttonFunctions }) => {
+
+    // Variables
+    const { a } = buttonFunctions
+
     return (
         <div className={styles.container}>
-            <button className={styles.b} onClick={bFunction}>B</button>
-            <button className={styles.a} onClick={aFunction}>A</button>
+            <button className={styles.b}>B</button>
+            <button className={styles.a} onClick={a}>A</button>
         </div>
     )
 }

@@ -1,9 +1,10 @@
 import { getAllPokemon } from "../services/pokemonService"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { getPage } from "../utils/getPage"
 
 // Styling and assets
-import styles from './LandingPage.module.scss'
+// import styles from './LandingPage.module.scss'
 
 // Components
 import Table from "../components/Table/Table"
@@ -20,6 +21,7 @@ const LandingPage = () => {
     const itemLast = itemFirst + pageLength
     const currentPage = getPage(itemFirst, itemLast, allPokemon)
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
     // ! Functions
 
@@ -63,11 +65,19 @@ const LandingPage = () => {
         setItemCurrent(Math.max(itemCurrent - pageLength, 0))
     }
 
-    const dPadControls = {
+    
+    // AB button functions
+    const openPokePage = () => {
+        navigate(`/pokemon/${itemCurrent + 1}`)
+    }
+
+    // Params
+    const buttonFunctions = {
         up: {function: moveCursorUp, disabled: itemCurrent === 0},
         right: {function: moveCursorRight, disabled: itemCurrent === allPokemon.length - 1},
         down: {function: moveCursorDown, disabled: itemCurrent === allPokemon.length - 1},
         left: {function: moveCursorLeft, disabled: itemCurrent === 0},
+        a: openPokePage
     }
 
     // // Fetch data needed for the current page of pokemon table
@@ -100,7 +110,7 @@ const LandingPage = () => {
                         )
                 }
             </div>
-            <Controls dPadControls={dPadControls} />
+            <Controls buttonFunctions={buttonFunctions} />
         </main>
     )
 }

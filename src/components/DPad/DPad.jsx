@@ -1,10 +1,10 @@
 // Styling
 import styles from './DPad.module.scss'
 
-const DPad = ({ dPadControls }) => {
+const DPad = ({ buttonFunctions }) => {
 
     // Variables
-    const { up, right, down, left } = dPadControls
+    const { up, right, down, left } = buttonFunctions
 
     // Component
     return (
