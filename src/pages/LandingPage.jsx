@@ -65,7 +65,6 @@ const LandingPage = () => {
         setItemCurrent(Math.max(itemCurrent - pageLength, 0))
     }
 
-    
     // AB button functions
     const openPokePage = () => {
         navigate(`/pokemon/${itemCurrent + 1}`)
@@ -77,7 +76,8 @@ const LandingPage = () => {
         right: {function: moveCursorRight, disabled: itemCurrent === allPokemon.length - 1},
         down: {function: moveCursorDown, disabled: itemCurrent === allPokemon.length - 1},
         left: {function: moveCursorLeft, disabled: itemCurrent === 0},
-        a: openPokePage
+        a: openPokePage,
+        b: null
     }
 
     // // Fetch data needed for the current page of pokemon table

@@ -5,6 +5,7 @@ import pokedex from "./assets/pokedex.png"
 
 // Pages
 import LandingPage from './pages/LandingPage'
+import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
 
 // App
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
       <Routes>
         {/* Landing page */}
         <Route path='/pokemon' element={<LandingPage />} />
-        <Route path='/pokemon/:pokeId' element={<h1>POKEMON</h1>} />
+        <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />
         {/* /team */}
       </Routes>
     </main>
