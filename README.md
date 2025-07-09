@@ -31,4 +31,13 @@ changed vision to match original plan
     * also inspired by the original gameboy aesthetic
     * data is now paginated to scroll through data like in the games - buttons disabled when it is now appropriate. Left and right skip through a whole page. Used `Math.max` function to stop the app going too far in the table when using left and right to skip a whole page.
     * used the official gameboy colours for screen. anything on screen will be one of these shades saved to variables scss file
-    * a challenge was overhauling the app so that the same buttons could be used as reusable components: the functions appropriate for the current page will be passed down
+    * a challenge was refactoring the code so that the same buttons could be used as reusable components: the functions appropriate for the current page will be passed down
+
+Next, building the pokemon detail page
+processed the data to only return what we need:
+* id
+* name
+* sprites - dig into this
+* types - do as in prev
+* height
+* weight

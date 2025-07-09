@@ -17,7 +17,7 @@ const PokemonDetails = () => {
     // ! Functions
     const fetchPokemon = useCallback(async () => {
         try {
-            const { data } = await getPokemonInfo(pokeId)
+            const data = await getPokemonInfo(pokeId)
             setPokemon(data)
         } catch (error) {
             console.log(error)

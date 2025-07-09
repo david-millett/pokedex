@@ -71,6 +71,22 @@ export const getPage = async (page, pageLength, pokemon) => {
 
 // Get individual pokemon page
 export const getPokemonInfo = async (pokeId) => {
-    const pokemon = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+    const { data } = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+    console.log(`Data: ${data}`)
+    const { id, name, sprites, types, height, weight } = data
+
+    const cleanTypes = types.map((type) => {
+        return type.type.name
+    })
+
+    const pokemon = {
+        number: id,
+        name: name,
+        types: cleanTypes,
+        height: height,
+        weight: weight,
+        sprite: sprites.versions['generation-i']['red-blue'].front_gray
+    }
+
     return pokemon
 }
