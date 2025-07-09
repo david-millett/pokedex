@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getPokemonInfo } from "../../services/pokemonService"
 
 // Components
+import PokemonInfo from "../../components/PokemonInfo/PokemonInfo"
 import Controls from "../../components/Controls/Controls"
 import Loading from "../../components/Loading"
 
@@ -50,7 +51,7 @@ const PokemonDetails = () => {
                 {
                     !pokemon
                         ? <Loading />
-                        : <h1>info</h1>
+                        : <PokemonInfo pokemon={pokemon} />
                 }
             </div>
             <Controls buttonFunctions={buttonFunctions} />
