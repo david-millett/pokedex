@@ -37,10 +37,10 @@ const PokemonDetails = () => {
 
     // Params
     const buttonFunctions = {
-        up: {function: null, disabled: null},
-        right: {function: null, disabled: null},
-        down: {function: null, disabled: null},
-        left: {function: null, disabled: null},
+        up: {function: null, disabled: false},
+        right: {function: null, disabled: false},
+        down: {function: null, disabled: false},
+        left: {function: null, disabled: false},
         a: null,
         b: goBack
     }

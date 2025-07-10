@@ -32,9 +32,9 @@ const Table = ({ currentPage, itemCurrent }) => {
                             {columns.map((column) => {
                                 let content
                                 if (column === 'number') {
-                                    content = pokemon[column]
+                                    content = pokemon[column] < 10 ? '00' + pokemon[column] : pokemon[column] < 100 ? '0' + pokemon[column] : pokemon[column]
                                 } else if (column === 'name') {
-                                    content = pokemon[column].charAt(0).toUpperCase() + pokemon[column].slice(1)
+                                    content = pokemon[column].toUpperCase()
                                 } else if (column === 'types') {
                                     content = <div className={styles.types}>{pokemon[column].map((type) => {
                                         return <TypeBadge key={type} type={type} />
