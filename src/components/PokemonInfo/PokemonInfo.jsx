@@ -13,10 +13,10 @@ const PokemonInfo = ({ pokemon }) => {
         <div>
             <p>{name.toUpperCase()}</p>
             <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
-            <p>{`HT ${height}`}</p>
-            <p>{`WT ${weight}`}</p>
-            {types.map((type) => {
-                return <p>{type}</p>
+            <p>HT <strong>{height}</strong></p>
+            <p>WT <strong>{weight}</strong></p>
+            {types.map((type, index) => {
+                return <p>TYPE {index + 1}/{type.toUpperCase()}</p>
             })}
         </div>
     )
