@@ -4,7 +4,6 @@ const PokemonInfo = ({ pokemon }) => {
 
     // Variables
     const { number, name, types, height, weight, sprite } = pokemon
-    // ! change sprite from gray to transparent
 
     // Functions
     // const gramsToPounds = () => {}

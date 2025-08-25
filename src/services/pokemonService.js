@@ -85,7 +85,8 @@ export const getPokemonInfo = async (pokeId) => {
         types: cleanTypes,
         height: height,
         weight: weight,
-        sprite: sprites.versions['generation-i']['red-blue'].front_gray
+        // front_gray is nicer for this app but front_transparent has no background
+        sprite: sprites.versions['generation-i']['red-blue'].front_transparent
     }
 
     return pokemon
