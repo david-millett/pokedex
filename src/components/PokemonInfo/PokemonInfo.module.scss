@@ -1,0 +1,15 @@
+// Variables
+@use '../../styles/variables' as *;
+
+.container {
+    img {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+.upperBanner {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}

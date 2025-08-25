@@ -1,3 +1,5 @@
+import styles from './PokemonInfo.module.scss'
+
 const PokemonInfo = ({ pokemon }) => {
 
     // Variables
@@ -10,8 +12,8 @@ const PokemonInfo = ({ pokemon }) => {
 
     // Component
     return (
-        <div>
-            <div>
+        <div className={styles.container}>
+            <div className={styles.upperBanner}>
                 <img src={sprite} />
                 <div>
                     <p>{name.toUpperCase()}</p>
