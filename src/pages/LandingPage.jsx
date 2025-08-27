@@ -1,17 +1,14 @@
 import { getAllPokemon } from "../services/pokemonService"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { getPage } from "../utils/getPage"
 
 // Styling and assets
-import styles from './LandingPage.module.scss'
-import pokedex from "../assets/pokedex.png"
+// import styles from './LandingPage.module.scss'
 
 // Components
-// import PageControls from "../components/PageControls/PageControls"
 import Table from "../components/Table/Table"
-import DPad from "../components/Dpad/Dpad"
-import ABButtons from "../components/ABButtons/ABButtons"
-import StartSelectButtons from "../components/StartSelectButtons/StartSelectButtons"
+import Controls from "../components/Controls/Controls"
 import Loading from "../components/Loading"
 
 const LandingPage = () => {
@@ -24,16 +21,10 @@ const LandingPage = () => {
     const itemLast = itemFirst + pageLength
     const currentPage = getPage(itemFirst, itemLast, allPokemon)
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
-    const itemControls = {
-        itemFirst,
-        setItemFirst,
-        itemCurrent,
-        setItemCurrent,
-        itemLast
-    }
+    // ! Functions
 
-    // Functions
     useEffect(() => {
         // Fetch pokemon data asynchronously on mount, then store it in state
         const fetchPokemon = async () => {
@@ -48,6 +39,46 @@ const LandingPage = () => {
         }
         fetchPokemon()
     }, [])
+
+    // DPad Functions
+    const moveCursorUp = () => {
+        if (itemCurrent === itemFirst) {
+            setItemFirst(itemFirst - 1)
+        }
+        setItemCurrent(itemCurrent - 1)
+    }
+
+    const moveCursorDown = () => {
+        if (itemCurrent === itemLast - 1) {
+            setItemFirst(itemFirst + 1)
+        }
+        setItemCurrent(itemCurrent + 1)
+    }
+
+    const moveCursorRight = () => {
+        setItemFirst(Math.min(itemFirst + pageLength, allPokemon.length - pageLength))
+        setItemCurrent(Math.min(itemCurrent + pageLength, allPokemon.length - 1))
+    }
+
+    const moveCursorLeft = () => {
+        setItemFirst(Math.max(itemFirst - pageLength, 0))
+        setItemCurrent(Math.max(itemCurrent - pageLength, 0))
+    }
+
+    // AB button functions
+    const openPokePage = () => {
+        navigate(`/pokemon/${itemCurrent + 1}`)
+    }
+
+    // Params
+    const buttonFunctions = {
+        up: {function: moveCursorUp, disabled: itemCurrent === 0},
+        right: {function: moveCursorRight, disabled: itemCurrent === allPokemon.length - 1},
+        down: {function: moveCursorDown, disabled: itemCurrent === allPokemon.length - 1},
+        left: {function: moveCursorLeft, disabled: itemCurrent === 0},
+        a: openPokePage,
+        b: null
+    }
 
     // // Fetch data needed for the current page of pokemon table
     // useEffect(() => {
@@ -66,12 +97,8 @@ const LandingPage = () => {
 
     // Page
     return (
-        <main className={styles.container}>
-            <h1>Pokedex</h1>
-            
-            {/* <PageControls pokemon={allPokemon} page={page} setPage={setPage} pageLength={pageLength} itemFirst={itemFirst} setItemFirst={setItemFirst} /> */}
-            <img src={pokedex} />
-            <div className={styles.screen}>
+        <main>
+            <div className="screen">
                 {
                     loading
                         ? <Loading />
@@ -83,13 +110,7 @@ const LandingPage = () => {
                         )
                 }
             </div>
-            <div className={styles.controls}>
-                <StartSelectButtons />
-                <div className={styles.lowerControls}>
-                    <DPad itemControls={itemControls} pageLength={pageLength} allPokemon={allPokemon} />
-                    <ABButtons />
-                </div>
-            </div>
+            <Controls buttonFunctions={buttonFunctions} />
         </main>
     )
 }
