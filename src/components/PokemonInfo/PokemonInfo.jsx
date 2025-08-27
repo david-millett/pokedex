@@ -21,7 +21,7 @@ const PokemonInfo = ({ pokemon }) => {
                     <p>WT <strong>{weight}</strong></p>
                 </div>
             </div>
-
+            <div className={styles.line}></div>
             <div>
                 {types.map((type, index) => {
                     return <p>TYPE {index + 1}/{type.toUpperCase()}</p>
