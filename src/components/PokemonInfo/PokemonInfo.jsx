@@ -3,7 +3,7 @@ import styles from './PokemonInfo.module.scss'
 const PokemonInfo = ({ pokemon }) => {
 
     // Variables
-    const { number, name, types, height, weight, sprite } = pokemon
+    const { number, name, types, height, weight, sprite, species, description } = pokemon
     
     // Functions
     const convertHeight = (decimeterHeight) => {
@@ -29,6 +29,7 @@ const PokemonInfo = ({ pokemon }) => {
                 <img src={sprite} />
                 <div>
                     <p>{name.toUpperCase()}</p>
+                    <p>{species}</p>
                     <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
                     <p>HT <strong>{convertHeight(height)}</strong></p>
                     <p>WT <strong>{convertWeight(weight)}</strong></p>
@@ -40,6 +41,7 @@ const PokemonInfo = ({ pokemon }) => {
                     return <p>TYPE {index + 1}/{type.toUpperCase()}</p>
                 })}
             </div>
+            <p>{description}</p>
         </div>
     )
 }

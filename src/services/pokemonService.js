@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon'
+const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species'
 
 // Function to get list of all original 151 pokemon and save them to local storage
 export const getAllPokemon = async () => {
@@ -71,9 +72,12 @@ export const getPage = async (page, pageLength, pokemon) => {
 
 // Get individual pokemon page
 export const getPokemonInfo = async (pokeId) => {
-    const { data } = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
-    console.log(`Data: ${data}`)
-    const { id, name, sprites, types, height, weight } = data
+    const { data: pokeData } = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+    const { data: speciesData} = await axios.get(`${POKEAPI_SPECIES_URL}/${pokeId}/`)
+    console.log(pokeData)
+    console.log(speciesData)
+    const { id, name, sprites, types, height, weight } = pokeData
+    const { genera, flavor_text_entries } = speciesData
 
     const cleanTypes = types.map((type) => {
         return type.type.name
@@ -85,8 +89,11 @@ export const getPokemonInfo = async (pokeId) => {
         types: cleanTypes,
         height: height,
         weight: weight,
+        species: genera[7].genus,
+        description: flavor_text_entries[0].flavor_text,
         sprite: sprites.versions['generation-i']['red-blue'].front_gray
     }
 
+    console.log(pokemon)
     return pokemon
 }

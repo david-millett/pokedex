@@ -41,3 +41,5 @@ processed the data to only return what we need:
 * types - do as in prev
 * height
 * weight
+
+Was meticulous about how the data should be viewed - as true to the original game as possible. This meant creating formulae to convert the heights and weights - and ensure they rendered in the correct style - and extensive CSS to process the images as required.
