@@ -27,9 +27,11 @@ img {
     width: 240px;
     height: 280px;
     border-radius: 20px;
+    border: 1px solid $screen4;
     background-color: $screen2;
     // background-color: white;
     color: $screen4;
+    box-shadow: 0 0 10px 2px $screen1;
 }
 
 // .filter {
