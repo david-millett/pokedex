@@ -5,9 +5,18 @@ const PokemonInfo = ({ pokemon }) => {
     // Variables
     const { number, name, types, height, weight, sprite } = pokemon
 
+    const convertedHeight = (height) => {
+        const converted = height * 0.328
+        const feet = Math.floor(converted)
+        const inches = Math.ceil((converted - feet) * 12)
+        return `${feet}' ${inches}"`
+    }
+
     // Functions
     // const gramsToPounds = () => {}
     // const cmToFeet = () => {}
+
+    
 
     // Component
     return (
@@ -17,7 +26,7 @@ const PokemonInfo = ({ pokemon }) => {
                 <div>
                     <p>{name.toUpperCase()}</p>
                     <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
-                    <p>HT <strong>{height}</strong></p>
+                    <p>HT <strong>{convertedHeight(height)}</strong></p>
                     <p>WT <strong>{weight}</strong></p>
                 </div>
             </div>
