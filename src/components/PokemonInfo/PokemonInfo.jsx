@@ -4,19 +4,23 @@ const PokemonInfo = ({ pokemon }) => {
 
     // Variables
     const { number, name, types, height, weight, sprite } = pokemon
-
-    const convertedHeight = (height) => {
-        const converted = height * 0.328
-        const feet = Math.floor(converted)
-        const inches = Math.ceil((converted - feet) * 12)
-        return `${feet}' ${inches}"`
+    
+    // Functions
+    const convertHeight = (decimeterHeight) => {
+        const converted = decimeterHeight * 0.328
+        let feet = Math.floor(converted)
+        let inches = Math.ceil((converted - feet) * 12)
+        if (inches === 12) {
+            feet++
+            inches = 0
+        }
+        return `${feet}' ${inches < 10 ? "0" + inches : inches}"`
     }
 
-    // Functions
-    // const gramsToPounds = () => {}
-    // const cmToFeet = () => {}
-
-    
+    const convertWeight = (hectogramWeight) => {
+        const converted = Math.round(hectogramWeight * 0.22)
+        return `${converted}.0lb`
+    }
 
     // Component
     return (
@@ -26,8 +30,8 @@ const PokemonInfo = ({ pokemon }) => {
                 <div>
                     <p>{name.toUpperCase()}</p>
                     <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
-                    <p>HT <strong>{convertedHeight(height)}</strong></p>
-                    <p>WT <strong>{weight}</strong></p>
+                    <p>HT <strong>{convertHeight(height)}</strong></p>
+                    <p>WT <strong>{convertWeight(weight)}</strong></p>
                 </div>
             </div>
             <div className={styles.line}></div>
