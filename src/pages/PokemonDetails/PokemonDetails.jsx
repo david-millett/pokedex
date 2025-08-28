@@ -48,6 +48,7 @@ const PokemonDetails = () => {
     return (
         <main>
             <div className="screen">
+                {/* <div className="filter"></div> */}
                 {
                     !pokemon
                         ? <Loading />
