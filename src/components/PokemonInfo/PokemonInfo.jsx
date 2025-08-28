@@ -29,7 +29,7 @@ const PokemonInfo = ({ pokemon }) => {
                 <img src={sprite} />
                 <div>
                     <p>{name.toUpperCase()}</p>
-                    <p>{species}</p>
+                    <p>{species.toUpperCase()}</p>
                     <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
                     <p>HT <strong>{convertHeight(height)}</strong></p>
                     <p>WT <strong>{convertWeight(weight)}</strong></p>

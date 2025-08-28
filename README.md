@@ -42,4 +42,6 @@ processed the data to only return what we need:
 * height
 * weight
 
-Was meticulous about how the data should be viewed - as true to the original game as possible. This meant creating formulae to convert the heights and weights - and ensure they rendered in the correct style - and extensive CSS to process the images as required.
+Was meticulous about how the data should be viewed - as true to the original game as possible. This meant creating formulae to convert the heights and weights - and ensure they rendered in the correct style - and extensive CSS to process the images as required. This included flipping the image, erasing the background, etc... add specifics more.
+
+Needed an additional call to the API to get extra information required for pokedex entries. Added this to pokemonService file.

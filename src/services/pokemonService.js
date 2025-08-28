@@ -89,11 +89,12 @@ export const getPokemonInfo = async (pokeId) => {
         types: cleanTypes,
         height: height,
         weight: weight,
-        species: genera[7].genus,
+        species: genera[7].genus.replace(' Pokémon', ''),
         description: flavor_text_entries[0].flavor_text,
         sprite: sprites.versions['generation-i']['red-blue'].front_gray
     }
 
     console.log(pokemon)
+
     return pokemon
 }
