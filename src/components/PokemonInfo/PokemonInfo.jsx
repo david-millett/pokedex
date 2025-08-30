@@ -19,18 +19,20 @@ const PokemonInfo = ({ pokemon }) => {
 
     const convertWeight = (hectogramWeight) => {
         const converted = Math.round(hectogramWeight * 0.22)
-        return `${converted}.0lb`
+        return `${converted}.0 lb`
     }
 
     // Component
     return (
         <div className={styles.container}>
             <div className={styles.upperBanner}>
-                <img src={sprite} />
-                <div>
+                <div className={styles.imageBlock}>
+                    <img src={sprite} />
+                    <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
+                </div>
+                <div className={styles.headlineInfo}>
                     <p>{name.toUpperCase()}</p>
                     <p>{species.toUpperCase()}</p>
-                    <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
                     <p>HT <strong>{convertHeight(height)}</strong></p>
                     <p>WT <strong>{convertWeight(weight)}</strong></p>
                 </div>
@@ -38,7 +40,7 @@ const PokemonInfo = ({ pokemon }) => {
             <div className={styles.line}></div>
             <div>
                 {types.map((type, index) => {
-                    return <p>TYPE {index + 1}/{type.toUpperCase()}</p>
+                    return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
                 })}
             </div>
             <p>{description}</p>
