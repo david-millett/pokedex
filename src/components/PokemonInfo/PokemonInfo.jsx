@@ -38,11 +38,11 @@ const PokemonInfo = ({ pokemon }) => {
                 </div>
             </div>
             <div className={styles.line}></div>
-            <div>
+            {/* <div>
                 {types.map((type, index) => {
                     return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
                 })}
-            </div>
+            </div> */}
             <p>{description}</p>
         </div>
     )
