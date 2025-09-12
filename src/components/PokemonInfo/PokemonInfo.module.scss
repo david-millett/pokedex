@@ -31,3 +31,31 @@
     flex-direction: column;
     gap: 5px;
 }
+
+.imageBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 2px;
+}
+
+.pressMe {
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    bottom: 0;
+    right: 0;
+    // text-align: right;
+    animation: blinker 1.5s linear infinite;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    p {
+
+    }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

@@ -14,12 +14,12 @@ const PokemonInfo = ({ pokemon }) => {
             feet++
             inches = 0
         }
-        return `${feet}' ${inches < 10 ? "0" + inches : inches}"`
+        return `${feet}'${inches < 10 ? "0" + inches : inches}"`
     }
 
     const convertWeight = (hectogramWeight) => {
         const converted = Math.round(hectogramWeight * 0.22)
-        return `${converted}.0 lb`
+        return `${converted}.0lb`
     }
 
     // Component
@@ -28,13 +28,13 @@ const PokemonInfo = ({ pokemon }) => {
             <div className={styles.upperBanner}>
                 <div className={styles.imageBlock}>
                     <img src={sprite} />
-                    <p>{`No. ${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
+                    <p className='number'>{`No.${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
                 </div>
                 <div className={styles.headlineInfo}>
                     <p>{name.toUpperCase()}</p>
                     <p>{species.toUpperCase()}</p>
-                    <p>HT <strong>{convertHeight(height)}</strong></p>
-                    <p>WT <strong>{convertWeight(weight)}</strong></p>
+                    <p>HT <span className='number'>{convertHeight(height)}</span></p>
+                    <p>WT <span className='number'>{convertWeight(weight)}</span></p>
                 </div>
             </div>
             <div className={styles.line}></div>
@@ -44,6 +44,7 @@ const PokemonInfo = ({ pokemon }) => {
                 })}
             </div> */}
             <p>{description}</p>
+            <div className={styles.pressMe}><p>A</p></div>
         </div>
     )
 }

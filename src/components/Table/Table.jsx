@@ -42,7 +42,7 @@ const Table = ({ currentPage, itemCurrent }) => {
                                 } else if (column === 'sprite'){
                                     content = <img src={pokemon[column]} />
                                 }
-                                return <td key={column}>{content}</td>
+                                return <td key={column} className={column === 'number' ? 'number' : ''}>{content}</td>
                             })}
                         </tr>
                     )
