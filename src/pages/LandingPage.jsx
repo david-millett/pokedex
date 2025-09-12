@@ -11,17 +11,11 @@ import Table from "../components/Table/Table"
 import Controls from "../components/Controls/Controls"
 import Loading from "../components/Loading"
 
-const LandingPage = () => {
+const LandingPage = ({ itemVariables }) => {
 
     // Variables
-
-
+    const { itemCurrent, setItemCurrent, itemFirst, setItemFirst } = itemVariables
     const [allPokemon, setAllPokemon] = useState([])
-    const [itemFirst, setItemFirst] = useState(0)
-    
-    const [itemCurrent, setItemCurrent] = useState(0)
-
-
     const pageLength = 10
     const itemLast = itemFirst + pageLength
     const currentPage = getPage(itemFirst, itemLast, allPokemon)

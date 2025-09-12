@@ -30,7 +30,6 @@ const PokemonDetails = () => {
     }, [pokeId, fetchPokemon])
 
     // AB button functions
-    // ! This resets the list, want it to go back to where we were...
     const goBack = () => {
         navigate('/pokemon')
     }
