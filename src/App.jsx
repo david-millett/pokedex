@@ -27,7 +27,6 @@ const App = () => {
       <h1>Pokedex</h1>
       <img src={pokedex} />
       <Routes>
-        {/* Landing page */}
         <Route path='/' element={<LandingPage />} />
         <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
         <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />

@@ -1,6 +1,14 @@
 const LandingPage = () => {
     return (
-        <h1>Hey</h1>
+        <main>
+            <div className="screen">
+                <h1>Welcome</h1>
+                <ul>
+                    <li>Pokedex</li>
+                    <li>Party</li>
+                </ul>
+            </div>
+        </main>
     )
 }
 
