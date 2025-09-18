@@ -5,7 +5,8 @@ import { useState } from 'react'
 import pokedex from "./assets/pokedex.png"
 
 // Pages
-import LandingPage from './pages/LandingPage'
+import LandingPage from './pages/LandingPage/LandingPage'
+import PokedexList from './pages/PokedexList'
 import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
 
 // App
@@ -27,7 +28,8 @@ const App = () => {
       <img src={pokedex} />
       <Routes>
         {/* Landing page */}
-        <Route path='/pokemon' element={<LandingPage itemVariables={itemVariables} />} />
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
         <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />
         {/* /team */}
       </Routes>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { getPage } from "../utils/getPage"
 
 // Styling and assets
-// import styles from './LandingPage.module.scss'
+
 
 // Components
 import Table from "../components/Table/Table"
