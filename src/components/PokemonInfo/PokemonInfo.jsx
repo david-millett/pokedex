@@ -3,7 +3,7 @@ import styles from './PokemonInfo.module.scss'
 const PokemonInfo = ({ pokemon }) => {
 
     // Variables
-    const { number, name, types, height, weight, sprite, species, description } = pokemon
+    const { number, name, height, weight, sprite, species, description } = pokemon
     
     // Functions
     const convertHeight = (decimeterHeight) => {

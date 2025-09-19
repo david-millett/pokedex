@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Controls from "../../components/Controls/Controls"
 
+import styles from './LandingPage.module.scss'
+
 const LandingPage = () => {
 
     // Variables
@@ -16,13 +18,17 @@ const LandingPage = () => {
         setItemCurrent(itemCurrent - 1)
     }
 
+    const menuSelect = () => {
+
+    }
+
     // Params
     const buttonFunctions = {
         up: {function: menuScrollUp, disabled: itemCurrent === 0},
-        right: {function: null, disabled: true},
+        right: {function: menuScrollDown, disabled: itemCurrent === menu.length - 1},
         down: {function: menuScrollDown, disabled: itemCurrent === menu.length - 1},
-        left: {function: null, disabled: true},
-        a: null,
+        left: {function: menuScrollUp, disabled: itemCurrent === 0},
+        a: menuSelect,
         b: null
     }
 
@@ -32,7 +38,7 @@ const LandingPage = () => {
                 <h1>Welcome</h1>
                 <ul>
                     {menu.map((item, index) => {
-                        return <li key={index}>{item}</li>
+                        return <li key={index} className={index === itemCurrent ? styles.current : ''}>{item}</li>
                     })}
                 </ul>
             </div>

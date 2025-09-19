@@ -1,3 +1,7 @@
 // Variables
-@use '../styles/variables' as *;
+@use '../../styles/variables' as *;
 
+.current {
+    color: $screen2;
+    background-color: $screen3;
+}
