@@ -8,6 +8,7 @@ import pokedex from "./assets/pokedex.png"
 import LandingPage from './pages/LandingPage/LandingPage'
 import PokedexList from './pages/PokedexList'
 import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
+import Party from './pages/Party/Party'
 
 // App
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/' element={<LandingPage menuCurrent={menuCurrent} setMenuCurrent={setMenuCurrent} />} />
         <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
         <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />
+        <Route path='/party' element={<Party />} />
         {/* /team */}
       </Routes>
     </main>
