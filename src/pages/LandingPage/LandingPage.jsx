@@ -1,33 +1,34 @@
-import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Controls from "../../components/Controls/Controls"
 
+// Styling and assets
 import styles from './LandingPage.module.scss'
 
-const LandingPage = () => {
+const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
 
     // Variables
-    const menu = ['pokedex', 'party']
-    const [itemCurrent, setItemCurrent] = useState(0)
+    const menu = ['pokemon', 'party']
+    const navigate = useNavigate()
 
     // Functions
     const menuScrollDown = () => {
-        setItemCurrent(itemCurrent + 1)
+        setMenuCurrent(menuCurrent + 1)
     }
 
     const menuScrollUp = () => {
-        setItemCurrent(itemCurrent - 1)
+        setMenuCurrent(menuCurrent - 1)
     }
 
     const menuSelect = () => {
-
+        navigate(`/${menu[menuCurrent]}`)
     }
 
     // Params
     const buttonFunctions = {
-        up: {function: menuScrollUp, disabled: itemCurrent === 0},
-        right: {function: menuScrollDown, disabled: itemCurrent === menu.length - 1},
-        down: {function: menuScrollDown, disabled: itemCurrent === menu.length - 1},
-        left: {function: menuScrollUp, disabled: itemCurrent === 0},
+        up: {function: menuScrollUp, disabled: menuCurrent === 0},
+        right: {function: menuScrollDown, disabled: menuCurrent === menu.length - 1},
+        down: {function: menuScrollDown, disabled: menuCurrent === menu.length - 1},
+        left: {function: menuScrollUp, disabled: menuCurrent === 0},
         a: menuSelect,
         b: null
     }
@@ -38,7 +39,7 @@ const LandingPage = () => {
                 <h1>Welcome</h1>
                 <ul>
                     {menu.map((item, index) => {
-                        return <li key={index} className={index === itemCurrent ? styles.current : ''}>{item}</li>
+                        return <li key={index} className={index === menuCurrent ? styles.current : ''}>{item}</li>
                     })}
                 </ul>
             </div>

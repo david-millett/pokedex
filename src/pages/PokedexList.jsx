@@ -69,6 +69,12 @@ const LandingPage = ({ itemVariables }) => {
         navigate(`/pokemon/${itemCurrent + 1}`)
     }
 
+    const goBack = () => {
+        setItemFirst(0)
+        setItemCurrent(0)
+        navigate('/')
+    }
+
     // Params
     const buttonFunctions = {
         up: {function: moveCursorUp, disabled: itemCurrent === 0},
@@ -76,23 +82,9 @@ const LandingPage = ({ itemVariables }) => {
         down: {function: moveCursorDown, disabled: itemCurrent === allPokemon.length - 1},
         left: {function: moveCursorLeft, disabled: itemCurrent === 0},
         a: openPokePage,
-        b: null
-    }
+        b: goBack
 
-    // // Fetch data needed for the current page of pokemon table
-    // useEffect(() => {
-    //         const fetchPageData = async () => {
-    //             setLoading(true)
-    //             try {
-    //                 const data = await getPage(page, pageLength, allPokemon)
-    //                 setCurrentPage(data)
-    //             } catch (error) {
-    //                 console.log(error)
-    //             }
-    //             setLoading(false) //is this the best spot for this? could also have an [error, setError] to display something if the request fails
-    //         }
-    //         fetchPageData()
-    //     }, [page, pageLength, allPokemon])
+    }
 
     // Page
     return (
