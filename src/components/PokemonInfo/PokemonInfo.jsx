@@ -38,14 +38,23 @@ const PokemonInfo = ({ pokemon, pageFlip }) => {
                 </div>
             </div>
             <div className={styles.line}></div>
-            <p className={pageFlip ? styles.hidden : ''}>{description}</p>
-            <div className={pageFlip ? '' : styles.hidden}>
-                {types.map((type, index) => {
-                    return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
-                })}
-                <p>Add to party?</p>
+            <div className={pageFlip ? styles.hidden : ''}>
+                <p>{description}</p>
+                <div className={styles.pressMe}><p>A</p></div>
+
             </div>
-            <div className={styles.pressMe}><p>A</p></div>
+            <div className={`${pageFlip ? '' : styles.hidden} ${styles.flippedPage}`}>
+                <div>
+                    {types.map((type, index) => {
+                        return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
+                    })}
+                </div>
+                <div>
+                    <p>Add to party?</p>
+                    <p>A = Yes</p>
+                    <p>B = Go back</p>
+                </div>
+            </div>
         </div>
     )
 }
