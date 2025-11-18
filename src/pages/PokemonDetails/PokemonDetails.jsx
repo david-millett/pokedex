@@ -31,14 +31,22 @@ const PokemonDetails = () => {
     }, [pokeId, fetchPokemon])
 
     // AB button functions
-    const goBack = () => {
-        navigate('/pokemon')
+    const pressB = () => {
+        if (pageFlip) {
+            // If page has been flipped, set back to original value and show description
+            setPageFlip(!pageFlip)
+        } else {
+            // Go back to previous pokedex list
+            navigate('/pokemon')
+        }
     }
 
     const pressA = () => {
         if (pageFlip) {
+            // Add the selected pokemon to your party
             console.log('add pkm to party')
         } else {
+            // Hide the description and show add to party options
             setPageFlip(!pageFlip)
         }
     }
@@ -50,7 +58,7 @@ const PokemonDetails = () => {
         down: {function: null, disabled: false},
         left: {function: null, disabled: false},
         a: pressA,
-        b: goBack
+        b: pressB
     }
 
     return (
