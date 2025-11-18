@@ -11,6 +11,7 @@ const PokemonDetails = () => {
 
     // Variables
     const [pokemon, setPokemon] = useState(null)
+    const [pageFlip, setPageFlip] = useState(false)
     
     const { pokeId } = useParams()
     const navigate = useNavigate()
@@ -34,13 +35,21 @@ const PokemonDetails = () => {
         navigate('/pokemon')
     }
 
+    const pressA = () => {
+        if (pageFlip) {
+            console.log('add pkm to party')
+        } else {
+            setPageFlip(!pageFlip)
+        }
+    }
+
     // Params
     const buttonFunctions = {
         up: {function: null, disabled: false},
         right: {function: null, disabled: false},
         down: {function: null, disabled: false},
         left: {function: null, disabled: false},
-        a: null,
+        a: pressA,
         b: goBack
     }
 
@@ -51,7 +60,7 @@ const PokemonDetails = () => {
                 {
                     !pokemon
                         ? <Loading />
-                        : <PokemonInfo pokemon={pokemon} />
+                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} />
                 }
             </div>
             <Controls buttonFunctions={buttonFunctions} />

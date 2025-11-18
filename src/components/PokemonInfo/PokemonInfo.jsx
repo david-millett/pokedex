@@ -1,9 +1,9 @@
 import styles from './PokemonInfo.module.scss'
 
-const PokemonInfo = ({ pokemon }) => {
+const PokemonInfo = ({ pokemon, pageFlip }) => {
 
     // Variables
-    const { number, name, height, weight, sprite, species, description } = pokemon
+    const { number, name, height, weight, sprite, species, description, types } = pokemon
     
     // Functions
     const convertHeight = (decimeterHeight) => {
@@ -38,12 +38,13 @@ const PokemonInfo = ({ pokemon }) => {
                 </div>
             </div>
             <div className={styles.line}></div>
-            {/* <div>
+            <p className={pageFlip ? styles.hidden : ''}>{description}</p>
+            <div className={pageFlip ? '' : styles.hidden}>
                 {types.map((type, index) => {
                     return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
                 })}
-            </div> */}
-            <p>{description}</p>
+                <p>Add to party?</p>
+            </div>
             <div className={styles.pressMe}><p>A</p></div>
         </div>
     )
