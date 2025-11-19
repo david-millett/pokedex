@@ -14,13 +14,14 @@ const PokemonDetails = () => {
 
     // Variables
     const [pokemon, setPokemon] = useState(null)
-    const [pageFlip, setPageFlip] = useState(false)
-    const [success, setSuccess] = useState(false)
-    // const [failure, setFailure] = useState(false)
     // const [pendingPkm, setPendingPkm] = useState(null)
-    
     const { pokeId } = useParams()
     const navigate = useNavigate()
+
+    // States
+    const [pageFlip, setPageFlip] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [failure, setFailure] = useState(false)
 
     // ! Functions
     const fetchPokemon = useCallback(async () => {
@@ -41,8 +42,9 @@ const PokemonDetails = () => {
         if (pageFlip) {
             // If page has been flipped, set back to original value and show description
             setPageFlip(!pageFlip)
-            // Also make sure success message is removed
+            // Also make sure success and failure messages are removed
             setSuccess(false)
+            setFailure(false)
         } else {
             // Go back to previous pokedex list
             navigate('/pokemon')
@@ -50,23 +52,34 @@ const PokemonDetails = () => {
     }
 
     const pressA = () => {
+        // Has a different function depending on the current state
 
-        // If page has been flipped to second page
-        if (pageFlip) {
+        // * If just failed to add a member to party
+
+
+        // * If just successfully added a pokemon
+        if (success) {
+            // Go back to pokedex list
+            navigate('/pokemon')
+
+        // * If page has been flipped to second page
+        } else if (pageFlip) {
             const partyLimit = 6
             const party = getParty()
+            // Attempt to add pokemon to the party
             if (party.length < partyLimit) {
-                // Add the current pokemon to your party if the party has space
+                // Add the current pokemon to your party if there is space
                 addToParty(party, pokemon)
                 setSuccess(true)
             } else {
-                // If the party is full with 6 members, proceed to options to remove a member
+                // If the party is full with 6 members, set state to failure
                 console.log('party is full')
-                // set the pending member
-                // navigate to remove pokemon page...
+                setFailure(true)
+                // ! set the pending member - is this step required? We will see as we progress
+                // setPendingPkm(pokemon)
             }
 
-        // If page hasn't been flipped
+        // * If page hasn't been flipped
         } else {
             // Hide the description and show add to party options
             setPageFlip(!pageFlip)
@@ -90,7 +103,7 @@ const PokemonDetails = () => {
                 {
                     !pokemon
                         ? <Loading />
-                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} success={success} />
+                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} success={success} failure={failure} />
                 }
             </div>
             <Controls buttonFunctions={buttonFunctions} />

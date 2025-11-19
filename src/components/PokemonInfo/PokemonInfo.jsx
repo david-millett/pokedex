@@ -1,6 +1,6 @@
 import styles from './PokemonInfo.module.scss'
 
-const PokemonInfo = ({ pokemon, pageFlip, success }) => {
+const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
 
     // Variables
     const { number, name, height, weight, sprite, species, description, types } = pokemon
@@ -40,17 +40,25 @@ const PokemonInfo = ({ pokemon, pageFlip, success }) => {
             <div className={styles.line}></div>
 
             {success && (
-                <p>{pokemon.name} was added!</p>
+                <div className={styles.flippedPage}>
+                    <p>{pokemon.name} was added!</p>
+                    <div>
+                        <p>A = to pokedex</p>
+                        <p>B = to {pokemon.name}</p>
+                    </div>
+                </div>
             )}
+
+            {failure && <p>The party is full! Choose a team member to remove.</p>}
 
             {!pageFlip && (
                 <div>
                     <p>{description}</p>
                     <div className={styles.pressMe}><p>A</p></div>
                 </div>
-                
             )}
-            {pageFlip && !success && (
+
+            {pageFlip && !success && !failure && (
                 <div className={styles.flippedPage}>
                     <div>
                         {types.map((type, index) => {
@@ -64,6 +72,7 @@ const PokemonInfo = ({ pokemon, pageFlip, success }) => {
                     </div>
                 </div>
             )}
+
         </div>
     )
 }
