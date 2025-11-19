@@ -48,3 +48,6 @@ Data needed to be processed, for example so that weight and height were displaye
 
 Needed an additional call to the API to get extra information required for pokedex entries. Added this to pokemonService file.
 
+Created functionality to flip the pokemon detail pages - this includes dynamically changing what actions the button functions perform.
+
+Set everything up to be able to add pokemon to the party - created a partyService file with a function to fetch the party and fleshed out the party page. Next step is to add the ability to add pokemon to the party!

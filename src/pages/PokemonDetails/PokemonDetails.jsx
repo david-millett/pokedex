@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getPokemonInfo } from "../../services/pokemonService"
+import { addToParty } from "../../services/partyService"
 
 // Components
 import PokemonInfo from "../../components/PokemonInfo/PokemonInfo"
@@ -44,7 +45,8 @@ const PokemonDetails = () => {
     const pressA = () => {
         if (pageFlip) {
             // Add the selected pokemon to your party
-            console.log('add pkm to party')
+            // console.log('add pkm to party')
+            addToParty('test')
         } else {
             // Hide the description and show add to party options
             setPageFlip(!pageFlip)
