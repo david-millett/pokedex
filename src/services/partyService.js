@@ -12,9 +12,17 @@ export const getParty = () => {
     return results
 }
 
-export const addToParty = (pokemon) => {
-    const party = getParty()
+// Function to add pokemon to the party
+export const addToParty = (party, pokemon) => {
     party.push(pokemon)
     localStorage.setItem('party', JSON.stringify(party))
     console.log(party)
+}
+
+
+// Function to remove pokemon from the party
+export const removeFromParty = (party, pokemon) => {
+    party
+    pokemon
+    return
 }

@@ -1,6 +1,6 @@
 import styles from './PokemonInfo.module.scss'
 
-const PokemonInfo = ({ pokemon, pageFlip }) => {
+const PokemonInfo = ({ pokemon, pageFlip, success }) => {
 
     // Variables
     const { number, name, height, weight, sprite, species, description, types } = pokemon
@@ -38,23 +38,32 @@ const PokemonInfo = ({ pokemon, pageFlip }) => {
                 </div>
             </div>
             <div className={styles.line}></div>
-            <div className={pageFlip ? styles.hidden : ''}>
-                <p>{description}</p>
-                <div className={styles.pressMe}><p>A</p></div>
 
-            </div>
-            <div className={`${pageFlip ? '' : styles.hidden} ${styles.flippedPage}`}>
+            {success && (
+                <p>{pokemon.name} was added!</p>
+            )}
+
+            {!pageFlip && (
                 <div>
-                    {types.map((type, index) => {
-                        return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
-                    })}
+                    <p>{description}</p>
+                    <div className={styles.pressMe}><p>A</p></div>
                 </div>
-                <div>
-                    <p>Add to party?</p>
-                    <p>A = Yes</p>
-                    <p>B = Go back</p>
+                
+            )}
+            {pageFlip && !success && (
+                <div className={styles.flippedPage}>
+                    <div>
+                        {types.map((type, index) => {
+                            return <p key={index}>TYPE {index + 1}/{type.toUpperCase()}</p>
+                        })}
+                    </div>
+                    <div>
+                        <p>Add to party?</p>
+                        <p>A = Yes</p>
+                        <p>B = Go back</p>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 }

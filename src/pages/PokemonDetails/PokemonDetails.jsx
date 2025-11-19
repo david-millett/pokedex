@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getPokemonInfo } from "../../services/pokemonService"
+
+import { getParty } from "../../services/partyService"
 import { addToParty } from "../../services/partyService"
 
 // Components
@@ -13,6 +15,9 @@ const PokemonDetails = () => {
     // Variables
     const [pokemon, setPokemon] = useState(null)
     const [pageFlip, setPageFlip] = useState(false)
+    const [success, setSuccess] = useState(false)
+    // const [failure, setFailure] = useState(false)
+    // const [pendingPkm, setPendingPkm] = useState(null)
     
     const { pokeId } = useParams()
     const navigate = useNavigate()
@@ -36,6 +41,8 @@ const PokemonDetails = () => {
         if (pageFlip) {
             // If page has been flipped, set back to original value and show description
             setPageFlip(!pageFlip)
+            // Also make sure success message is removed
+            setSuccess(false)
         } else {
             // Go back to previous pokedex list
             navigate('/pokemon')
@@ -43,10 +50,23 @@ const PokemonDetails = () => {
     }
 
     const pressA = () => {
+
+        // If page has been flipped to second page
         if (pageFlip) {
-            // Add the selected pokemon to your party
-            // console.log('add pkm to party')
-            addToParty('test')
+            const partyLimit = 6
+            const party = getParty()
+            if (party.length < partyLimit) {
+                // Add the current pokemon to your party if the party has space
+                addToParty(party, pokemon)
+                setSuccess(true)
+            } else {
+                // If the party is full with 6 members, proceed to options to remove a member
+                console.log('party is full')
+                // set the pending member
+                // navigate to remove pokemon page...
+            }
+
+        // If page hasn't been flipped
         } else {
             // Hide the description and show add to party options
             setPageFlip(!pageFlip)
@@ -70,7 +90,7 @@ const PokemonDetails = () => {
                 {
                     !pokemon
                         ? <Loading />
-                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} />
+                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} success={success} />
                 }
             </div>
             <Controls buttonFunctions={buttonFunctions} />
