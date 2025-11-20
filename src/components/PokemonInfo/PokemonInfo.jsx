@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import styles from './PokemonInfo.module.scss'
 
 const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
 
     // Variables
     const { number, name, height, weight, sprite, species, description, types } = pokemon
+    const [imgLoading, setImgLoading] = useState(true)
     
     // Functions
     const convertHeight = (decimeterHeight) => {
@@ -27,7 +29,12 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
         <div className={styles.container}>
             <div className={styles.upperBanner}>
                 <div className={styles.imageBlock}>
-                    <img src={sprite} />
+                    {imgLoading && <p>loading</p>}
+                    <img
+                        src={sprite}
+                        onLoad={() => setImgLoading(false)}
+                        style={{display: imgLoading ? "none" : "block" }}
+                    />
                     <p className='number'>{`No.${number < 10 ? '00' + number : number < 100 ? '0' + number : number}`}</p>
                 </div>
                 <div className={styles.headlineInfo}>
@@ -44,7 +51,7 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                     <p>{pokemon.name} was added!</p>
                     <div>
                         <p>A = to pokedex</p>
-                        <p>B = to {pokemon.name}</p>
+                        <p>B = back to {pokemon.name}</p>
                     </div>
                 </div>
             )}
