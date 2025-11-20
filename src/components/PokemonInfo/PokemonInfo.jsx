@@ -1,5 +1,8 @@
 import { useState } from 'react'
+
+// Styling and assets
 import styles from './PokemonInfo.module.scss'
+import loader8bit from '../../assets/loader8bit.gif'
 
 const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
 
@@ -29,7 +32,7 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
         <div className={styles.container}>
             <div className={styles.upperBanner}>
                 <div className={styles.imageBlock}>
-                    {imgLoading && <p>loading</p>}
+                    {imgLoading && <img src={loader8bit} />}
                     <img
                         src={sprite}
                         onLoad={() => setImgLoading(false)}
@@ -56,7 +59,15 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                 </div>
             )}
 
-            {failure && <p>The party is full! Choose a team member to remove.</p>}
+            {failure && (
+                <div className={styles.flippedPage}>
+                    <p>The party is full! Choose a team member to remove.</p>
+                    <div>
+                        <p>A = OK</p>
+                        <p>B = Go back</p>
+                    </div>
+                </div>
+            )}
 
             {!pageFlip && (
                 <div>
