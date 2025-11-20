@@ -8,9 +8,10 @@ import Loading from "../../components/Loading"
 import PartyList from "../../components/PartyList/PartyList"
 import EmptyParty from "../../components/EmptyParty/EmptyParty"
 
-const Party = () => {
+const Party = ({ partyVariables }) => {
 
     // Variables
+    const { partyCurrent, setPartyCurrent } = partyVariables
     const [party, setParty] = useState([])
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
@@ -30,7 +31,9 @@ const Party = () => {
         fetchParty()
     }, [])
 
-
+    const moveCursorDown = () => {
+        setPartyCurrent(partyCurrent + 1)
+    }
 
     const goBack = () => {
         navigate('/')
@@ -40,7 +43,7 @@ const Party = () => {
     const buttonFunctions = {
         up: {function: null, disabled: true},
         right: {function: null, disabled: true},
-        down: {function: null, disabled: true},
+        down: {function: moveCursorDown, disabled: partyCurrent === party.length - 1},
         left: {function: null, disabled: true},
         a: null,
         b: goBack
@@ -57,7 +60,7 @@ const Party = () => {
                                 <h1>PARTY</h1>
                                 {party.length === 0
                                     ? <EmptyParty />
-                                    : <PartyList party={party}/>
+                                    : <PartyList party={party} partyCurrent={partyCurrent}/>
                                 }
                             </>
                         )

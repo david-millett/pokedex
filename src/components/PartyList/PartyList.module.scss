@@ -1,0 +1,19 @@
+// Variables
+@use '../../styles/variables' as *;
+
+.pkmLi {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container {
+    padding-top: 10px;
+}
+
+.current {
+    color: $screen2;
+    background-color: $screen3;
+}

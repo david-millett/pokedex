@@ -22,6 +22,7 @@ const PokemonDetails = () => {
     const [pageFlip, setPageFlip] = useState(false)
     const [success, setSuccess] = useState(false)
     const [failure, setFailure] = useState(false)
+    // const [showRemoveMenu, setShowRemoveMenu] = useState(false)
 
     // ! Functions
     const fetchPokemon = useCallback(async () => {

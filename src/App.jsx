@@ -19,12 +19,18 @@ const App = () => {
   // Pokedex 
   const [itemFirst, setItemFirst] = useState(0)
   const [itemCurrent, setItemCurrent] = useState(0)
+  const [partyCurrent, setPartyCurrent] = useState(0)
 
   const itemVariables = {
     itemFirst: itemFirst,
     setItemFirst: setItemFirst,
     itemCurrent: itemCurrent,
     setItemCurrent: setItemCurrent
+  }
+
+  const partyVariables = {
+    partyCurrent: partyCurrent,
+    setPartyCurrent: setPartyCurrent
   }
 
   return (
@@ -35,7 +41,7 @@ const App = () => {
         <Route path='/' element={<LandingPage menuCurrent={menuCurrent} setMenuCurrent={setMenuCurrent} />} />
         <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
         <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />
-        <Route path='/party' element={<Party />} />
+        <Route path='/party' element={<Party partyVariables={partyVariables} />} />
         {/* /team */}
       </Routes>
     </main>
