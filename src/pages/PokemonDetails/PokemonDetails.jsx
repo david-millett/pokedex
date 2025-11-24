@@ -47,8 +47,8 @@ const PokemonDetails = () => {
             setSuccess(false)
             setFailure(false)
         } else {
-            // Go back to previous pokedex list
-            navigate('/pokemon')
+            // Go back to previous page
+            navigate(-1)
         }
     }
 

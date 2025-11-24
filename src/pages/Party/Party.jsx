@@ -35,6 +35,7 @@ const Party = ({ partyVariables }) => {
     // Button Functions
     const moveCursorDown = () => {
         setPartyCurrent(partyCurrent + 1)
+        console.log(party[partyCurrent + 1])
     }
 
     const moveCursorUp = () => {
@@ -53,13 +54,17 @@ const Party = ({ partyVariables }) => {
         navigate('/')
     }
 
+    const viewPokemon = () => {
+        navigate(`/pokemon/${party[partyCurrent].number}`)
+    }
+
     // Params
     const buttonFunctions = {
         up: {function: moveCursorUp, disabled: partyCurrent === 0},
         right: {function: moveCursorEnd, disabled: null},
         down: {function: moveCursorDown, disabled: partyCurrent === party.length - 1},
         left: {function: moveCursorStart, disabled: null},
-        a: null,
+        a: viewPokemon,
         b: goBack
     }
 

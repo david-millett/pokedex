@@ -5,7 +5,7 @@ const PartyList = ({ party, partyCurrent }) => {
         <main className={styles.container}>
             {party.map((pokemon, index) => {
                     return (
-                        <div className={`${styles.pkmLi} ${index === partyCurrent ? styles.current : ''}`}>
+                        <div key={index} className={`${styles.pkmLi} ${index === partyCurrent ? styles.current : ''}`}>
                             <p>{pokemon.name}</p>
                             <p>{pokemon.types.length > 1 ? `${pokemon.types[0].slice(0, 3)}/${pokemon.types[1].slice(0, 3)}` : pokemon.types[0].slice(0, 3)}</p>
                         </div>
