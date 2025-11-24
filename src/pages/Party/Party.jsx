@@ -31,8 +31,22 @@ const Party = ({ partyVariables }) => {
         fetchParty()
     }, [])
 
+
+    // Button Functions
     const moveCursorDown = () => {
         setPartyCurrent(partyCurrent + 1)
+    }
+
+    const moveCursorUp = () => {
+        setPartyCurrent(partyCurrent - 1)
+    }
+
+    const moveCursorEnd = () => {
+        setPartyCurrent(party.length - 1)
+    }
+
+    const moveCursorStart = () => {
+        setPartyCurrent(0)
     }
 
     const goBack = () => {
@@ -41,10 +55,10 @@ const Party = ({ partyVariables }) => {
 
     // Params
     const buttonFunctions = {
-        up: {function: null, disabled: true},
-        right: {function: null, disabled: true},
+        up: {function: moveCursorUp, disabled: partyCurrent === 0},
+        right: {function: moveCursorEnd, disabled: null},
         down: {function: moveCursorDown, disabled: partyCurrent === party.length - 1},
-        left: {function: null, disabled: true},
+        left: {function: moveCursorStart, disabled: null},
         a: null,
         b: goBack
     }
