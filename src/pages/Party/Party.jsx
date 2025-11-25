@@ -1,6 +1,8 @@
 import { getParty } from "../../services/partyService"
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
+
+import { removeFromParty } from "../../services/partyService"
 
 // Components
 import Controls from "../../components/Controls/Controls"
@@ -18,25 +20,26 @@ const Party = ({ partyVariables }) => {
     const navigate = useNavigate()
 
     // Functions
-    useEffect(() => {
-        const fetchParty = () => {
-            setLoading(true)
-            try {
-                const data = getParty()
-                setParty(data)
-            } catch (error) {
-                console.log(error)
-            }
-            setLoading(false)
+    const fetchParty = useCallback(() => {
+        setLoading(true)
+        try {
+            const data = getParty()
+            setParty(data)
+        } catch (error) {
+            console.log(error)
         }
-        fetchParty()
+        setLoading(false)
     }, [])
+    
+    useEffect(() => {
+        fetchParty()
+    }, [fetchParty])
 
 
     // Button Functions
     const moveCursorDown = () => {
         setPartyCurrent(partyCurrent + 1)
-        console.log(party[partyCurrent + 1])
+        // console.log(partyCurrent)
     }
 
     const moveCursorUp = () => {
@@ -61,7 +64,8 @@ const Party = ({ partyVariables }) => {
 
     const aFunction = () => {
         if (removeVisible) {
-            null
+            removeFromParty(party, partyCurrent)
+            fetchParty()
         } else {
             navigate(`/pokemon/${party[partyCurrent].number}`)
         }
