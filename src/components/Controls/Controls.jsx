@@ -6,10 +6,10 @@ import DPad from "../Dpad/Dpad"
 import ABButtons from "../ABButtons/ABButtons"
 import StartSelectButtons from "../StartSelectButtons/StartSelectButtons"
 
-const Controls = ({ buttonFunctions }) => {
+const Controls = ({ buttonFunctions, selectFunction }) => {
     return (
         <div className={styles.controls}>
-            <StartSelectButtons />
+            <StartSelectButtons selectFunction={selectFunction} />
             <div className={styles.lowerControls}>
                 <DPad buttonFunctions={buttonFunctions} />
                 <ABButtons buttonFunctions={buttonFunctions} />

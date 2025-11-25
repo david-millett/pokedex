@@ -13,6 +13,7 @@ const Party = ({ partyVariables }) => {
     // Variables
     const { partyCurrent, setPartyCurrent } = partyVariables
     const [party, setParty] = useState([])
+    const [removeVisible, setRemoveVisible] = useState(false)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
@@ -58,6 +59,10 @@ const Party = ({ partyVariables }) => {
         navigate(`/pokemon/${party[partyCurrent].number}`)
     }
 
+    const selectFunction = () => {
+        setRemoveVisible(!removeVisible)
+    }
+
     // Params
     const buttonFunctions = {
         up: {function: moveCursorUp, disabled: partyCurrent === 0},
@@ -77,15 +82,16 @@ const Party = ({ partyVariables }) => {
                         : (
                             <>
                                 <h1>PARTY</h1>
+                                <p>Press select to edit</p>
                                 {party.length === 0
                                     ? <EmptyParty />
-                                    : <PartyList party={party} partyCurrent={partyCurrent}/>
+                                    : <PartyList party={party} partyCurrent={partyCurrent} removeVisible={removeVisible}/>
                                 }
                             </>
                         )
                 }
             </div>
-            <Controls buttonFunctions={buttonFunctions} />
+            <Controls buttonFunctions={buttonFunctions} selectFunction={selectFunction} />
         </main>
     )
 }
