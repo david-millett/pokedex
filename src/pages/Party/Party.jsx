@@ -51,12 +51,20 @@ const Party = ({ partyVariables }) => {
         setPartyCurrent(0)
     }
 
-    const goBack = () => {
-        navigate('/')
+    const bFunction = () => {
+        if (removeVisible) {
+            setRemoveVisible(false)
+        } else {
+            navigate('/')
+        }
     }
 
-    const viewPokemon = () => {
-        navigate(`/pokemon/${party[partyCurrent].number}`)
+    const aFunction = () => {
+        if (removeVisible) {
+            null
+        } else {
+            navigate(`/pokemon/${party[partyCurrent].number}`)
+        }
     }
 
     const selectFunction = () => {
@@ -69,8 +77,8 @@ const Party = ({ partyVariables }) => {
         right: {function: moveCursorEnd, disabled: null},
         down: {function: moveCursorDown, disabled: partyCurrent === party.length - 1},
         left: {function: moveCursorStart, disabled: null},
-        a: viewPokemon,
-        b: goBack
+        a: aFunction,
+        b: bFunction
     }
 
     return (
@@ -82,7 +90,7 @@ const Party = ({ partyVariables }) => {
                         : (
                             <>
                                 <h1>PARTY</h1>
-                                <p>Press select to edit</p>
+                                <p>{removeVisible ? 'Choose who to remove' : 'Press select to edit'}</p>
                                 {party.length === 0
                                     ? <EmptyParty />
                                     : <PartyList party={party} partyCurrent={partyCurrent} removeVisible={removeVisible}/>

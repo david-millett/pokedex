@@ -53,3 +53,7 @@ Created functionality to flip the pokemon detail pages - this includes dynamical
 Set everything up to be able to add pokemon to the party - created a partyService file with a function to fetch the party and fleshed out the party page. Next step is to add the ability to add pokemon to the party!
 
 simple to set up a function to add a pokemon to the party. however, a pokemon party cannot exceed 6 - so there needs to be a somewhat complex process put into motion if this limit has been reached. We have to block adding the pokemon, then show a page asking which one should be removed, then remove that one to add the new one. For good user experience, this means a series of messages need to be shown on screen - decided the best way was to have various states and use conditional rendering with && operator to determine which messages are visible to users.
+
+created a function so that pressing the start function always returns the user to the home page. Created a conditional so that the select function is operational depending on whether a function has been passed to it, as not all pages use it.
+
+Decided to use the select button to add an edit option to the party list. That way, can choose a member to delete when viewing the list. Normally, clicking on the member shows more info about them instead, but when this is visible, the option will be there to delete the pokemon.
