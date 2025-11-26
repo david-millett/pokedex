@@ -3,6 +3,8 @@ import axios from "axios"
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon'
 const POKEAPI_SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species'
 
+// ! BETTER ERROR HANDLING REQUIRED
+
 // Function to get list of all original 151 pokemon and save them to local storage
 export const getAllPokemon = async () => {
 
@@ -72,29 +74,37 @@ export const getPage = async (page, pageLength, pokemon) => {
 
 // Get individual pokemon page
 export const getPokemonInfo = async (pokeId) => {
-    const { data: pokeData } = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
-    const { data: speciesData} = await axios.get(`${POKEAPI_SPECIES_URL}/${pokeId}/`)
-    console.log(pokeData)
-    console.log(speciesData)
-    const { id, name, sprites, types, height, weight } = pokeData
-    const { genera, flavor_text_entries } = speciesData
+    try {
+        const { data: pokeData } = await axios.get(`${POKEAPI_URL}/${pokeId}/`)
+        const { data: speciesData} = await axios.get(`${POKEAPI_SPECIES_URL}/${pokeId}/`)
+        console.log(pokeData)
+        console.log(speciesData)
+        const { id, name, sprites, types, height, weight } = pokeData
+        const { genera, flavor_text_entries } = speciesData
 
-    const cleanTypes = types.map((type) => {
-        return type.type.name
-    })
+        const cleanTypes = types.map((type) => {
+            return type.type.name
+        })
 
-    const pokemon = {
-        number: id,
-        name: name,
-        types: cleanTypes,
-        height: height,
-        weight: weight,
-        species: genera[7].genus.replace(' Pokémon', ''),
-        description: flavor_text_entries[0].flavor_text,
-        sprite: sprites.versions['generation-i']['red-blue'].front_gray
+        const speciesEng = genera.find((genus) => genus.language.name === 'en').genus.replace(' Pokémon', '')
+        const redBlueDexEntry = flavor_text_entries.find((entry) => entry.language.name === 'en' && entry.version.name === 'red').flavor_text
+        const redBlueSprite = sprites.versions['generation-i']['red-blue'].front_gray
+
+        const pokemon = {
+            number: id,
+            name: name,
+            types: cleanTypes,
+            height: height,
+            weight: weight,
+            species: speciesEng,
+            description: redBlueDexEntry,
+            sprite: redBlueSprite
+        }
+
+        console.log(pokemon)
+        return pokemon
+        
+    } catch (error) {
+        console.log(error)
     }
-
-    console.log(pokemon)
-
-    return pokemon
 }
