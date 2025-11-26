@@ -51,7 +51,7 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
 
             {success && (
                 <div className={styles.flippedPage}>
-                    <p>{pokemon.name} was added!</p>
+                    <p>{pokemon.name} joined the party!</p>
                     <div>
                         <p>A = to pokedex</p>
                         <p>B = back to {pokemon.name}</p>

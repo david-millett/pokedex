@@ -16,6 +16,9 @@ const Party = ({ partyVariables }) => {
     const { partyCurrent, setPartyCurrent } = partyVariables
     const [party, setParty] = useState([])
     const [removeVisible, setRemoveVisible] = useState(false)
+    const defaultMessage = 'Press Select to edit'
+    // const emptyMessage = 'Your party is empty!'
+    const [message, setMessage] = useState(defaultMessage)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
@@ -33,6 +36,7 @@ const Party = ({ partyVariables }) => {
     
     useEffect(() => {
         fetchParty()
+        // if (party.length === 0) {setMessage(emptyMessage)}
     }, [fetchParty])
 
 
@@ -64,14 +68,20 @@ const Party = ({ partyVariables }) => {
 
     const aFunction = () => {
         if (removeVisible) {
+            setMessage(`Goodbye, ${party[partyCurrent].name}!`)
             removeFromParty(party, partyCurrent)
             fetchParty()
+            setRemoveVisible(false)
+            setPartyCurrent(0)
         } else {
             navigate(`/pokemon/${party[partyCurrent].number}`)
         }
     }
 
     const selectFunction = () => {
+        if (removeVisible) {
+            setMessage(defaultMessage)
+        }
         setRemoveVisible(!removeVisible)
     }
 
@@ -94,7 +104,7 @@ const Party = ({ partyVariables }) => {
                         : (
                             <>
                                 <h1>PARTY</h1>
-                                <p>{removeVisible ? 'Choose who to remove' : 'Press select to edit'}</p>
+                                <p>{removeVisible ? 'Choose who to remove' : message}</p>
                                 {party.length === 0
                                     ? <EmptyParty />
                                     : <PartyList party={party} partyCurrent={partyCurrent} removeVisible={removeVisible}/>
@@ -103,9 +113,11 @@ const Party = ({ partyVariables }) => {
                         )
                 }
             </div>
-            <Controls buttonFunctions={buttonFunctions} selectFunction={selectFunction} />
+            <Controls buttonFunctions={buttonFunctions} selectFunction={party.length > 0 ? selectFunction : null} />
         </main>
     )
 }
 
 export default Party
+
+// ! Set the message to your party is empty if it is... use the same p. also have a flashing effect on edit mode. also nullify the select button if party is empty

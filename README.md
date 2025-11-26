@@ -57,3 +57,5 @@ simple to set up a function to add a pokemon to the party. however, a pokemon pa
 created a function so that pressing the start function always returns the user to the home page. Created a conditional so that the select function is operational depending on whether a function has been passed to it, as not all pages use it.
 
 Decided to use the select button to add an edit option to the party list. That way, can choose a member to delete when viewing the list. Normally, clicking on the member shows more info about them instead, but when this is visible, the option will be there to delete the pokemon.
+
+Created function to remove - made it so page updates instantly to reflect the party member being removed. Also created a dynamic message system to give good user feedback that the member was removed. Was a challenge to make sure all variables were set correctly afterwards to ensure the best possible visual feedback. Proud of how this works.
