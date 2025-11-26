@@ -9,6 +9,7 @@ import LandingPage from './pages/LandingPage/LandingPage'
 import PokedexList from './pages/PokedexList'
 import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
 import Party from './pages/Party/Party'
+import RemoveToAdd from './pages/RemoveToAdd/RemoveToAdd'
 
 // App
 const App = () => {
@@ -28,9 +29,18 @@ const App = () => {
     setItemCurrent: setItemCurrent
   }
 
+  // Party
   const partyVariables = {
     partyCurrent: partyCurrent,
     setPartyCurrent: setPartyCurrent
+  }
+
+  // Pending
+  const [pendingPkm, setPendingPkm] = useState(null)
+
+  const pendingVariables = {
+    pendingPkm: pendingPkm,
+    setPendingPkm: setPendingPkm
   }
 
   return (
@@ -40,7 +50,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LandingPage menuCurrent={menuCurrent} setMenuCurrent={setMenuCurrent} />} />
         <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
-        <Route path='/pokemon/:pokeId' element={<PokemonDetails />} />
+        <Route path='/pokemon/:pokeId' element={<PokemonDetails pendingVariables={pendingVariables} />} />
+        <Route path='pokemon/:pokeId/editTeam' element={<RemoveToAdd partyVariables={partyVariables} pendingVariables={pendingVariables} />} />
         <Route path='/party' element={<Party partyVariables={partyVariables} />} />
         {/* /team */}
       </Routes>

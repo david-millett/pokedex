@@ -10,13 +10,13 @@ import PokemonInfo from "../../components/PokemonInfo/PokemonInfo"
 import Controls from "../../components/Controls/Controls"
 import Loading from "../../components/Loading"
 
-const PokemonDetails = () => {
+const PokemonDetails = ({ pendingVariables }) => {
 
     // Variables
     const [pokemon, setPokemon] = useState(null)
-    // const [pendingPkm, setPendingPkm] = useState(null)
     const { pokeId } = useParams()
     const navigate = useNavigate()
+    const { setPendingPkm } = pendingVariables
 
     // States
     const [pageFlip, setPageFlip] = useState(false)
@@ -56,10 +56,11 @@ const PokemonDetails = () => {
         // Has a different function depending on the current state
 
         // * If just failed to add a member to party
-
-
+        if (failure) {
+            navigate('editTeam')
+        
         // * If just successfully added a pokemon
-        if (success) {
+        } else if (success) {
             // Go back to pokedex list
             navigate('/pokemon')
 
@@ -77,7 +78,7 @@ const PokemonDetails = () => {
                 console.log('party is full')
                 setFailure(true)
                 // ! set the pending member - is this step required? We will see as we progress
-                // setPendingPkm(pokemon)
+                setPendingPkm(pokemon)
             }
 
         // * If page hasn't been flipped
@@ -100,7 +101,6 @@ const PokemonDetails = () => {
     return (
         <main>
             <div className="screen">
-                {/* <div className="filter"></div> */}
                 {
                     !pokemon
                         ? <Loading />
