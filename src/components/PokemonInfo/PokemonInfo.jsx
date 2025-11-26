@@ -53,8 +53,8 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                 <div className={styles.flippedPage}>
                     <p>{pokemon.name} joined the party!</p>
                     <div>
-                        <p>A = to pokedex</p>
-                        <p>B = back to {pokemon.name}</p>
+                        <p><span className='flash'>A</span> to pokedex</p>
+                        <p><span className='flash'>B</span> back to {pokemon.name}</p>
                     </div>
                 </div>
             )}
@@ -63,8 +63,8 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                 <div className={styles.flippedPage}>
                     <p>The party is full! Choose a team member to remove.</p>
                     <div>
-                        <p>A = OK</p>
-                        <p>B = Go back</p>
+                        <p><span className='flash'>A</span> OK</p>
+                        <p><span className='flash'>B</span> Go back</p>
                     </div>
                 </div>
             )}
@@ -85,8 +85,8 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                     </div>
                     <div>
                         <p>Add to party?</p>
-                        <p>A = Yes</p>
-                        <p>B = Go back</p>
+                        <p><span className='flash'>A</span> Yes</p>
+                        <p><span className='flash'>B</span> Go back</p>
                     </div>
                 </div>
             )}

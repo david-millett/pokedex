@@ -116,5 +116,3 @@ const Party = ({ partyVariables }) => {
 }
 
 export default Party
-
-// ! have a flashing effect on edit mode

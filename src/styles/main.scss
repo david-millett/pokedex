@@ -50,10 +50,10 @@ img {
     font-size: 10px;
 }
 
-// .filter {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     background-color: $screen2;
-//     opacity: 0.85;
-// }
+.flash {
+    animation: flashing 1.5s linear infinite;
+}
+
+@keyframes flashing {
+    50% {opacity: 0%;}
+}
