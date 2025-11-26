@@ -87,7 +87,7 @@ export const getPokemonInfo = async (pokeId) => {
         })
 
         const speciesEng = genera.find((genus) => genus.language.name === 'en').genus.replace(' Pokémon', '')
-        const redBlueDexEntry = flavor_text_entries.find((entry) => entry.language.name === 'en' && entry.version.name === 'red').flavor_text
+        const redBlueDexEntry = flavor_text_entries.find((entry) => entry.language.name === 'en' && entry.version.name === 'red').flavor_text.replace('\f', ' ')
         const redBlueSprite = sprites.versions['generation-i']['red-blue'].front_gray
 
         const pokemon = {
