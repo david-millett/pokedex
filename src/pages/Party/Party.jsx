@@ -16,9 +16,8 @@ const Party = ({ partyVariables }) => {
     const { partyCurrent, setPartyCurrent } = partyVariables
     const [party, setParty] = useState([])
     const [removeVisible, setRemoveVisible] = useState(false)
-    const defaultMessage = 'Press Select to edit'
-    // const emptyMessage = 'Your party is empty!'
-    const [message, setMessage] = useState(defaultMessage)
+    // const defaultMessage = '[Press Select to edit]'
+    const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
@@ -36,7 +35,6 @@ const Party = ({ partyVariables }) => {
     
     useEffect(() => {
         fetchParty()
-        // if (party.length === 0) {setMessage(emptyMessage)}
     }, [fetchParty])
 
 
@@ -79,9 +77,7 @@ const Party = ({ partyVariables }) => {
     }
 
     const selectFunction = () => {
-        if (removeVisible) {
-            setMessage(defaultMessage)
-        }
+        setMessage(null)
         setRemoveVisible(!removeVisible)
     }
 
@@ -104,7 +100,8 @@ const Party = ({ partyVariables }) => {
                         : (
                             <>
                                 <h1>PARTY</h1>
-                                <p>{removeVisible ? 'Choose who to remove' : message}</p>
+                                <p>{message}</p>
+                                {!message && party.length > 0 && <p>{removeVisible ? 'Choose who to remove' : '[Press Select to edit]'}</p>}
                                 {party.length === 0
                                     ? <EmptyParty />
                                     : <PartyList party={party} partyCurrent={partyCurrent} removeVisible={removeVisible}/>
@@ -120,4 +117,4 @@ const Party = ({ partyVariables }) => {
 
 export default Party
 
-// ! Set the message to your party is empty if it is... use the same p. also have a flashing effect on edit mode. also nullify the select button if party is empty
+// ! have a flashing effect on edit mode
