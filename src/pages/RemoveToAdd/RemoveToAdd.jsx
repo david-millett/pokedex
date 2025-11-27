@@ -51,6 +51,7 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
         const aFunction = () => {
             removeFromParty(party, partyCurrent)
             addToParty(party, pendingPkm)
+            // ! set success to true, show a page explainign what has happened and enable buttons to do approp stuff!
         }
     
         // Params

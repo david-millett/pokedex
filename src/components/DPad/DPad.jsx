@@ -9,13 +9,13 @@ const DPad = ({ buttonFunctions }) => {
     // Component
     return (
         <div className={styles.container}>
-            <button disabled={up.disabled} onClick={up.function}>U</button>
+            <button className={styles.u} disabled={up.disabled} onClick={up.function}>U</button>
             <div>
-                <button disabled={left.disabled} onClick={left.function}>L</button>
+                <button className={styles.l} disabled={left.disabled} onClick={left.function}>L</button>
                 <div className={styles.space}></div>
-                <button disabled={right.disabled} onClick={right.function}>R</button>
+                <button className={styles.r} disabled={right.disabled} onClick={right.function}>R</button>
             </div>
-            <button disabled={down.disabled} onClick={down.function}>D</button>
+            <button className={styles.d} disabled={down.disabled} onClick={down.function}>D</button>
         </div>
     )
 }
