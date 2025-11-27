@@ -57,7 +57,7 @@ const PokemonDetails = ({ pendingVariables }) => {
 
         // * If just failed to add a member to party
         if (failure) {
-            navigate('editTeam')
+            navigate('/editTeam')
         
         // * If just successfully added a pokemon
         } else if (success) {

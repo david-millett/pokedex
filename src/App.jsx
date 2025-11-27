@@ -51,7 +51,7 @@ const App = () => {
         <Route path='/' element={<LandingPage menuCurrent={menuCurrent} setMenuCurrent={setMenuCurrent} />} />
         <Route path='/pokemon' element={<PokedexList itemVariables={itemVariables} />} />
         <Route path='/pokemon/:pokeId' element={<PokemonDetails pendingVariables={pendingVariables} />} />
-        <Route path='pokemon/:pokeId/editTeam' element={<RemoveToAdd partyVariables={partyVariables} pendingVariables={pendingVariables} />} />
+        <Route path='/editTeam' element={<RemoveToAdd partyVariables={partyVariables} pendingVariables={pendingVariables} />} />
         <Route path='/party' element={<Party partyVariables={partyVariables} />} />
         {/* /team */}
       </Routes>

@@ -55,7 +55,7 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
             if (success) {
                 navigate('/pokemon')
             } else {
-                setDeletedPkm(party[partyCurrent].name)
+                setDeletedPkm(party[partyCurrent])
                 removeFromParty(party, partyCurrent)
                 addToParty(party, pendingPkm)
                 setSuccess(true)
@@ -80,10 +80,10 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
                     ? <div>
                         <p>Success!</p>
                         <p>Added {pendingPkm.name} to the party.</p>
-                        <p>{deletedPkm} was removed from the party!</p>
+                        <p>Removed {deletedPkm.name} from the party.</p>
                         <div>
-                            <p><span>A</span> Back to pokedex</p>
-                            <p><span>B</span> Back to {pendingPkm.name}</p>
+                            <p><span className="flash">A</span> Back to pokedex</p>
+                            <p><span className="flash">B</span> Back to {pendingPkm.name}</p>
                         </div>
                     </div>
 
