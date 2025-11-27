@@ -77,7 +77,6 @@ const PokemonDetails = ({ pendingVariables }) => {
                 // If the party is full with 6 members, set state to failure
                 console.log('party is full')
                 setFailure(true)
-                // ! set the pending member - is this step required? We will see as we progress
                 setPendingPkm(pokemon)
             }
 

@@ -12,6 +12,8 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
     const { partyCurrent, setPartyCurrent } = partyVariables
     const { pendingPkm } = pendingVariables
     const [party, setParty] = useState([])
+    const [success, setSuccess] = useState(false)
+    const [deletedPkm, setDeletedPkm] = useState('pokemon')
     const navigate = useNavigate()
     
     useEffect(() => {
@@ -19,6 +21,7 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
             try {
                 const data = getParty()
                 setParty(data)
+                console.log(data)
             } catch (error) {
                 console.log(error)
             }
@@ -49,9 +52,14 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
         }
     
         const aFunction = () => {
-            removeFromParty(party, partyCurrent)
-            addToParty(party, pendingPkm)
-            // ! set success to true, show a page explainign what has happened and enable buttons to do approp stuff!
+            if (success) {
+                navigate('/pokemon')
+            } else {
+                setDeletedPkm(party[partyCurrent].name)
+                removeFromParty(party, partyCurrent)
+                addToParty(party, pendingPkm)
+                setSuccess(true)
+            }
         }
     
         // Params
@@ -67,10 +75,20 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
     return (
         <main>
             <div className="screen">
-                {
-                    <div>
-                        <h1>Party</h1>
-                        <p>Choose who to replace with {pendingPkm.name}</p>
+                <h1>Party</h1>
+                {success
+                    ? <div>
+                        <p>Success!</p>
+                        <p>Added {pendingPkm.name} to the party.</p>
+                        <p>{deletedPkm} was removed from the party!</p>
+                        <div>
+                            <p><span>A</span> Back to pokedex</p>
+                            <p><span>B</span> Back to {pendingPkm.name}</p>
+                        </div>
+                    </div>
+
+                    : <div>
+                        <p>Choose who {pendingPkm.name} will replace</p>
                         <PartyList party={party} partyCurrent={partyCurrent} removeVisible={true} />
                     </div>
                 }
