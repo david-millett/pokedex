@@ -15,8 +15,8 @@ const StartSelectButtons = ({ selectFunction }) => {
 
     return (
         <div className={styles.container}>
-            <button onClick={startFunction}>Start</button>
-            <button onClick={selectFunction || null}>Select</button>
+            <button onClick={startFunction}>START</button>
+            <button onClick={selectFunction || null}>SELECT</button>
         </div>
     )
 }

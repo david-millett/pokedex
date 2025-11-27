@@ -1,6 +1,9 @@
+@use '../../styles/variables' as *;
+
 .container {
     button, .space {
-        background-color: black;
+        background-color: $button-dark;
+        color: $button-dark;
         width: 25px;
         height: 25px;
         border: none;

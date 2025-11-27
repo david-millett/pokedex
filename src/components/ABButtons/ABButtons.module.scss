@@ -7,15 +7,20 @@
         border-radius: 50px;
         width: 45px;
         height: 45px;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
     }
 }
 
 .a {
-    background-color: green;
+    background-color: rgb(25, 168, 25);
+    color: darkgreen;
     margin-bottom: 10px;
 }
 
 .b {
-    background-color: blue;
+    background-color: rgb(75, 75, 232);
+    color: darkblue;
     margin-top: 10px;
 }
