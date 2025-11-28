@@ -6,7 +6,7 @@ import { removeFromParty } from "../../services/partyService"
 
 // Components
 import Controls from "../../components/Controls/Controls"
-import Loading from "../../components/Loading"
+import Loading from "../../components/Loading/Loading"
 import PartyList from "../../components/PartyList/PartyList"
 import EmptyParty from "../../components/EmptyParty/EmptyParty"
 

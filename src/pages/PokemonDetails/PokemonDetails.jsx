@@ -8,7 +8,7 @@ import { addToParty } from "../../services/partyService"
 // Components
 import PokemonInfo from "../../components/PokemonInfo/PokemonInfo"
 import Controls from "../../components/Controls/Controls"
-import Loading from "../../components/Loading"
+import Loading from "../../components/Loading/Loading"
 
 const PokemonDetails = ({ pendingVariables }) => {
 

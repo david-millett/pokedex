@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { getParty, removeFromParty, addToParty } from "../../services/partyService"
 
 // Components
-import Loading from "../../components/Loading"
+import Loading from "../../components/Loading/Loading"
 import PartyList from "../../components/PartyList/PartyList"
 import Controls from "../../components/Controls/Controls"
 

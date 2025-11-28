@@ -61,7 +61,8 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
 
             {failure && (
                 <div className={styles.flippedPage}>
-                    <p>The party is full! Choose a team member to remove.</p>
+                    <p>X The party is full! X</p>
+                    <p>Choose a team member to remove.</p>
                     <div>
                         <p><span className='flash'>A</span> OK</p>
                         <p><span className='flash'>B</span> Go back</p>

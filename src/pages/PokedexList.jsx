@@ -9,7 +9,7 @@ import { getPage } from "../utils/getPage"
 // Components
 import Table from "../components/Table/Table"
 import Controls from "../components/Controls/Controls"
-import Loading from "../components/Loading"
+import Loading from "../components/Loading/Loading"
 
 const LandingPage = ({ itemVariables }) => {
 
