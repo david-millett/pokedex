@@ -7,6 +7,9 @@ import Loading from "../../components/Loading/Loading"
 import PartyList from "../../components/PartyList/PartyList"
 import Controls from "../../components/Controls/Controls"
 
+// Styling
+import styles from './RemoveToAdd.module.scss'
+
 const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
 
     const { partyCurrent, setPartyCurrent } = partyVariables
@@ -77,11 +80,11 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
             <div className="screen">
                 <h1>Party</h1>
                 {success
-                    ? <div>
+                    ? <div className={styles.container}>
                         <p>Success!</p>
-                        <p>Added {pendingPkm.name} to the party.</p>
-                        <p>Removed {deletedPkm.name} from the party.</p>
-                        <div>
+                        <p>{pendingPkm.name} was added to the party. Welcome!</p>
+                        <p>{deletedPkm.name} was removed. Bye!</p>
+                        <div className={styles.options}>
                             <p><span className="flash">A</span> Back to pokedex</p>
                             <p><span className="flash">B</span> Back to {pendingPkm.name}</p>
                         </div>
