@@ -1,15 +1,15 @@
-import { getAllPokemon } from "../services/pokemonService"
+import { getAllPokemon } from "../../services/pokemonService"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { getPage } from "../utils/getPage"
+import { getPage } from "../../utils/getPage"
 
 // Styling and assets
 
 
 // Components
-import Table from "../components/Table/Table"
-import Controls from "../components/Controls/Controls"
-import Loading from "../components/Loading/Loading"
+import Table from "../../components/Table/Table"
+import Controls from "../../components/Controls/Controls"
+import Loading from "../../components/Loading/Loading"
 
 const LandingPage = ({ itemVariables }) => {
 

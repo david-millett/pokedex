@@ -6,7 +6,7 @@ import pokedex from "./assets/pokedex.png"
 
 // Pages
 import LandingPage from './pages/LandingPage/LandingPage'
-import PokedexList from './pages/PokedexList'
+import PokedexList from './pages/PokedexList/PokedexList'
 import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
 import Party from './pages/Party/Party'
 import RemoveToAdd from './pages/RemoveToAdd/RemoveToAdd'
