@@ -39,22 +39,10 @@ const Party = ({ partyVariables }) => {
 
 
     // Button Functions
-    const moveCursorDown = () => {
-        setPartyCurrent(partyCurrent + 1)
-        // console.log(partyCurrent)
-    }
-
-    const moveCursorUp = () => {
-        setPartyCurrent(partyCurrent - 1)
-    }
-
-    const moveCursorEnd = () => {
-        setPartyCurrent(party.length - 1)
-    }
-
-    const moveCursorStart = () => {
-        setPartyCurrent(0)
-    }
+    const moveCursorDown = () => setPartyCurrent(partyCurrent + 1)
+    const moveCursorUp = () => setPartyCurrent(partyCurrent - 1)
+    const moveCursorEnd = () => setPartyCurrent(party.length - 1)
+    const moveCursorStart = () => setPartyCurrent(0)
 
     const bFunction = () => {
         if (removeVisible) {

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { getParty, removeFromParty, addToParty } from "../../services/partyService"
 
 // Components
-import Loading from "../../components/Loading/Loading"
 import PartyList from "../../components/PartyList/PartyList"
 import Controls from "../../components/Controls/Controls"
 
@@ -12,13 +11,15 @@ import styles from './RemoveToAdd.module.scss'
 
 const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
 
+    // Variables
+    const [party, setParty] = useState([])
     const { partyCurrent, setPartyCurrent } = partyVariables
     const { pendingPkm } = pendingVariables
-    const [party, setParty] = useState([])
-    const [success, setSuccess] = useState(false)
     const [deletedPkm, setDeletedPkm] = useState('pokemon')
+    const [success, setSuccess] = useState(false)
     const navigate = useNavigate()
     
+    // Functions
     useEffect(() => {
         const fetchParty = () => {
             try {
@@ -33,26 +34,12 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
     }, [])
 
      // Button Functions
-        const moveCursorDown = () => {
-            setPartyCurrent(partyCurrent + 1)
-            // console.log(partyCurrent)
-        }
+        const moveCursorDown = () => setPartyCurrent(partyCurrent + 1)
+        const moveCursorUp = () => setPartyCurrent(partyCurrent - 1)
+        const moveCursorEnd = () => setPartyCurrent(party.length - 1)
+        const moveCursorStart = () => setPartyCurrent(0)
     
-        const moveCursorUp = () => {
-            setPartyCurrent(partyCurrent - 1)
-        }
-    
-        const moveCursorEnd = () => {
-            setPartyCurrent(party.length - 1)
-        }
-    
-        const moveCursorStart = () => {
-            setPartyCurrent(0)
-        }
-    
-        const bFunction = () => {
-            navigate(-1)
-        }
+        const bFunction = () => navigate(-1)
     
         const aFunction = () => {
             if (success) {
@@ -90,7 +77,7 @@ const RemoveToAdd = ({ partyVariables, pendingVariables }) => {
                         </div>
                     </div>
 
-                    : <div>
+                    : <div className={styles.spacing}>
                         <p>Choose who {pendingPkm.name} will replace</p>
                         <PartyList party={party} partyCurrent={partyCurrent} removeVisible={true} />
                     </div>
