@@ -59,6 +59,7 @@ const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
                     <div className={styles.welcomeImage}>
                         {/* <p>pika!</p> */}
                         <img src={pika} />
+                        {/* <p>pika!</p> */}
                     </div>
                     <ul>
                         {menu.map((item, index) => {
