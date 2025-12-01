@@ -11,6 +11,7 @@ import PokemonDetails from './pages/PokemonDetails/PokemonDetails'
 import Party from './pages/Party/Party'
 import RemoveToAdd from './pages/RemoveToAdd/RemoveToAdd'
 import Info from './pages/Info/Info'
+import NotExist from './pages/NotExist/NotExist'
 
 // App
 const App = () => {
@@ -55,7 +56,8 @@ const App = () => {
         <Route path='/editTeam' element={<RemoveToAdd partyVariables={partyVariables} pendingVariables={pendingVariables} />} />
         <Route path='/party' element={<Party partyVariables={partyVariables} />} />
         <Route path='/info' element={<Info />} />
-        {/* /team */}
+        {/* Error handling */}
+        <Route path='*' element={<NotExist />} />
       </Routes>
     </main>
   )

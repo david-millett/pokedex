@@ -9,6 +9,7 @@ import { addToParty } from "../../services/partyService"
 import PokemonInfo from "../../components/PokemonInfo/PokemonInfo"
 import Controls from "../../components/Controls/Controls"
 import Loading from "../../components/Loading/Loading"
+import NotFound from "../../components/NotFound/NotFound"
 
 const PokemonDetails = ({ pendingVariables }) => {
 
@@ -101,9 +102,12 @@ const PokemonDetails = ({ pendingVariables }) => {
         <main>
             <div className="screen">
                 {
-                    !pokemon
-                        ? <Loading />
-                        : <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} success={success} failure={failure} />
+                    // Error handling if user attempts to view a pokemon not for which there is no data
+                    Number(pokeId) > 151 ? <NotFound /> :
+                    // Give user loading feedback while loading data
+                    !pokemon ? <Loading /> :
+                    // Once pokemon data loaded, show pokemon info
+                    <PokemonInfo pokemon={pokemon} pageFlip={pageFlip} success={success} failure={failure} />
                 }
             </div>
             <Controls buttonFunctions={buttonFunctions} />
