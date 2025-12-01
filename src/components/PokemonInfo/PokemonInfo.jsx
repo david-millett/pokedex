@@ -47,7 +47,7 @@ const PokemonInfo = ({ pokemon, pageFlip, success, failure }) => {
                     <p>WT <span className='number'>{convertWeight(weight)}</span></p>
                 </div>
             </div>
-            <div className={styles.line}></div>
+            <div className="line"></div>
 
             {success && (
                 <div className={styles.flippedPage}>

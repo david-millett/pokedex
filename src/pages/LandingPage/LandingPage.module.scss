@@ -5,3 +5,34 @@
     color: $screen2;
     background-color: $screen3;
 }
+
+.container {
+    li {
+        list-style: none;
+    }
+
+    img {
+        width: 100px;
+        mix-blend-mode: multiply;
+        margin: auto;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    gap: 20px;
+    // ul {
+    //     border-top: 2px solid;
+    //     border-bottom: 2px solid;
+    //     border-color: $screen4;
+    // }
+}
+
+.buttonDeets {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}

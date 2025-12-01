@@ -3,20 +3,37 @@ import Controls from "../../components/Controls/Controls"
 
 // Styling and assets
 import styles from './LandingPage.module.scss'
+import pika from '../../assets/pkmyellowpika.gif'
 
 const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
 
     // Variables
-    const menu = ['pokemon', 'party']
+    const menu = ['pokemon', 'party', 'info']
     const navigate = useNavigate()
 
     // Functions
     const menuScrollDown = () => {
-        setMenuCurrent(menuCurrent + 1)
+        if (menuCurrent === menu.length - 1) {
+            setMenuCurrent(0)
+        } else {
+            setMenuCurrent(menuCurrent + 1)
+        }
     }
 
     const menuScrollUp = () => {
-        setMenuCurrent(menuCurrent - 1)
+        if (menuCurrent === 0) {
+            setMenuCurrent(menu.length - 1)
+        } else {
+            setMenuCurrent(menuCurrent - 1)
+        }
+    }
+
+    const menuScrollEnd = () => {
+        setMenuCurrent(menu.length - 1)
+    }
+
+    const menuScrollStart = () => {
+        setMenuCurrent(0)
     }
 
     const menuSelect = () => {
@@ -25,23 +42,35 @@ const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
 
     // Params
     const buttonFunctions = {
-        up: {function: menuScrollUp, disabled: menuCurrent === 0},
-        right: {function: menuScrollDown, disabled: menuCurrent === menu.length - 1},
-        down: {function: menuScrollDown, disabled: menuCurrent === menu.length - 1},
-        left: {function: menuScrollUp, disabled: menuCurrent === 0},
+        up: {function: menuScrollUp, disabled: false},
+        right: {function: menuScrollEnd, disabled: false},
+        down: {function: menuScrollDown, disabled: false},
+        left: {function: menuScrollStart, disabled: false},
         a: menuSelect,
         b: null
     }
 
     return (
-        <main>
+        <main className={styles.container}>
             <div className="screen">
-                <h1>Welcome</h1>
-                <ul>
-                    {menu.map((item, index) => {
-                        return <li key={index} className={index === menuCurrent ? styles.current : ''}>{item}</li>
-                    })}
-                </ul>
+                <div className={styles.menu}>
+                    <h1>Welcome</h1>
+                        {/* <div className="line"></div> */}
+                    <div className={styles.welcomeImage}>
+                        {/* <p>pika!</p> */}
+                        <img src={pika} />
+                    </div>
+                    <ul>
+                        {menu.map((item, index) => {
+                            return <li key={index} className={index === menuCurrent ? styles.current : ''}>{item}</li>
+                        })}
+                    </ul>
+                    <div className={styles.buttonDeets}>
+                        <p><span className="flash">A</span> Enter</p>
+                        <p><span className="flash">B</span> Back</p>
+                        {/* <p>SRT Return</p> */}
+                    </div>
+                </div>
             </div>
             <Controls buttonFunctions={buttonFunctions} />
         </main>
