@@ -1,7 +1,20 @@
+import { useNavigate } from "react-router-dom"
+
+// Styling and assets
+import styles from './Info.module.scss'
+
 // Components
 import Controls from "../../components/Controls/Controls"
 
 const Info = () => {
+
+    // Variables
+    const navigate = useNavigate()
+
+    // Functions
+    const bFunction = () => {
+        navigate(-1)
+    }
 
     // Params
     const buttonFunctions = {
@@ -10,14 +23,19 @@ const Info = () => {
         down: {function: null, disabled: null},
         left: {function: null, disabled: null},
         a: null,
-        b: null
+        b: bFunction
     }
 
     return (
         <main>
-            <div className="screen">
+            <div className={`screen ${styles.container}`}>
                 <h1>Info</h1>
-                <p>How to use this app</p>
+                {/* <p>Welcome!</p> */}
+                {/* <p>Use the pokedex app to view info on the original 151 pokemon.</p> */}
+                {/* <p>You can add up to six of your favourites onto your team, which you can view and edit from the party menu.</p> */}
+                <p>If your team is already full? No problem, you will simply be prompted to remove a member.</p>
+                <p>Thanks to the PokeAPI for the data.</p>
+                <p>Check out my GitHub</p>
             </div>
             <Controls buttonFunctions={buttonFunctions} />
         </main>
