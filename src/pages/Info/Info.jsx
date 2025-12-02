@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 // Styling and assets
@@ -10,10 +11,19 @@ const Info = () => {
 
     // Variables
     const navigate = useNavigate()
+    const [pageFlip, setPageFlip] = useState(false)
 
     // Functions
+    const aFunction = () => {
+        setPageFlip(!pageFlip)
+    }
+    
     const bFunction = () => {
-        navigate(-1)
+        if (pageFlip) {
+            setPageFlip(false)
+        } else {
+            navigate(-1)
+        }
     }
 
     // Params
@@ -22,7 +32,7 @@ const Info = () => {
         right: {function: null, disabled: null},
         down: {function: null, disabled: null},
         left: {function: null, disabled: null},
-        a: null,
+        a: aFunction,
         b: bFunction
     }
 
@@ -30,12 +40,20 @@ const Info = () => {
         <main>
             <div className={`screen ${styles.container}`}>
                 <h1>Info</h1>
-                {/* <p>Welcome!</p> */}
-                {/* <p>Use the pokedex app to view info on the original 151 pokemon.</p> */}
-                {/* <p>You can add up to six of your favourites onto your team, which you can view and edit from the party menu.</p> */}
-                <p>If your team is already full? No problem, you will simply be prompted to remove a member.</p>
-                <p>Thanks to the PokeAPI for the data.</p>
-                <p>Check out my GitHub</p>
+                {!pageFlip
+                    ? <>
+                        <p>Welcome!</p>
+                        <p>Use the pokedex app to view info on the original 151 pokemon.</p>
+                        <p>You can add up to six of your favourites onto your team, which you can view and edit from the party menu.</p>
+                        <p><span className="flash">A</span> Next</p>
+                    </>
+
+                    : <>
+                        <p>If your team is already full? No problem, you will simply be prompted to remove a member.</p>
+                        <p>Thanks to the PokeAPI for the data.</p>
+                        <p>Check out my GitHub</p>
+                    </>
+                }
             </div>
             <Controls buttonFunctions={buttonFunctions} />
         </main>
