@@ -16,7 +16,6 @@ const Party = ({ partyVariables }) => {
     const { partyCurrent, setPartyCurrent } = partyVariables
     const [party, setParty] = useState([])
     const [removeVisible, setRemoveVisible] = useState(false)
-    // const defaultMessage = '[Press Select to edit]'
     const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()

@@ -21,13 +21,7 @@
 .menu {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     gap: 20px;
-    // ul {
-    //     border-top: 2px solid;
-    //     border-bottom: 2px solid;
-    //     border-color: $screen4;
-    // }
 }
 
 .buttonDeets {
@@ -39,13 +33,4 @@
 
 .welcomeImage {
     display: flex;
-    // p {
-        // animation: pikapi 1s linear infinite;
-    // }
 }
-
-// @keyframes pikapi {
-    // 49.9% {opacity: 1;}
-    // 50% {opacity: 0;}
-    // 50.1% {opacity: 1;}
-// }

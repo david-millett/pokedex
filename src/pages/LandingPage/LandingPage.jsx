@@ -55,11 +55,8 @@ const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
             <div className="screen">
                 <div className={styles.menu}>
                     <h1>Welcome</h1>
-                        {/* <div className="line"></div> */}
                     <div className={styles.welcomeImage}>
-                        {/* <p>pika!</p> */}
                         <img src={pika} />
-                        {/* <p>pika!</p> */}
                     </div>
                     <ul>
                         {menu.map((item, index) => {
@@ -69,7 +66,6 @@ const LandingPage = ({ menuCurrent, setMenuCurrent }) => {
                     <div className={styles.buttonDeets}>
                         <p><span className="flash">A</span> Enter</p>
                         <p><span className="flash">B</span> Back</p>
-                        {/* <p>SRT Return</p> */}
                     </div>
                 </div>
             </div>

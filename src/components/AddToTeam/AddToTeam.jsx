@@ -1,7 +1,7 @@
-const AddToTeam = () => {
-    return (
-        <h1>Add to team?</h1>
-    )
-}
+// const AddToTeam = () => {
+//     return (
+//         <h1>Add to team?</h1>
+//     )
+// }
 
-export default AddToTeam
+// export default AddToTeam

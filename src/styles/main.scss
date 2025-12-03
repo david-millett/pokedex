@@ -2,19 +2,15 @@
 
 // Nice font but it's massive
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    // font-family: VT323;
     font-family: Silkscreen;
-    // font-family: 'Press Start 2P';
 }
 
 main {
@@ -39,7 +35,6 @@ img {
     border-radius: 20px;
     border: 1px solid $screen4;
     background-color: $screen2;
-    // background-color: white;
     color: $screen4;
     box-shadow: 0 0 10px 2px $screen1;
     font-size: 14px;
@@ -57,9 +52,3 @@ img {
 @keyframes flashing {
     50% {opacity: 0%;}
 }
-
-// .line {
-//     height: 2px;
-//     background-color: $screen4;
-//     margin: 20px 0;
-// }

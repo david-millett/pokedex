@@ -96,7 +96,6 @@ const LandingPage = ({ itemVariables }) => {
                         : (
                             <>
                                 <Table currentPage={currentPage} itemCurrent={itemCurrent} />
-                                {/* <p>Showing {page * pageLength + 1}-{(page + 1) * pageLength} of {allPokemon.length} pokemon</p> */}
                             </>
                         )
                 }

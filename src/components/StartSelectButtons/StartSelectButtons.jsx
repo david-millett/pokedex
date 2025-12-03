@@ -13,6 +13,7 @@ const StartSelectButtons = ({ selectFunction }) => {
         navigate('/')
     }
 
+    // Component
     return (
         <div className={styles.container}>
             <button onClick={startFunction}>START</button>
