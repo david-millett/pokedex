@@ -6,7 +6,16 @@
         color: $button-dark;
         width: 25px;
         height: 25px;
-        border: none;
+        // border: none;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:active {
+        background-color: rgb(31, 31, 31);
+        color: rgb(31, 31, 31);
     }
 
     div {
@@ -14,7 +23,22 @@
     }
 }
 
-.u {border-radius: 5px 5px 0 0;}
-.d {border-radius: 0 0 5px 5px;}
-.r {border-radius: 0 5px 5px 0;}
-.l {border-radius: 5px 0 0 5px;}
+.u {
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+
+.d {
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+}
+
+.r {
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+.l {
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}

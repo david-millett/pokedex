@@ -10,6 +10,11 @@
         font-size: 15px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
+        
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 }
 
@@ -19,8 +24,18 @@
     margin-bottom: 10px;
 }
 
+.a:active {
+    background-color: darkgreen;
+    color: rgb(1, 58, 1);
+}
+
 .b {
     background-color: rgb(75, 75, 232);
     color: darkblue;
     margin-top: 10px;
+}
+
+.b:active {
+    background-color: rgb(0, 0, 166);
+    color: black;
 }
